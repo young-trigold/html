@@ -4,6 +4,8 @@
 
 ## References(参考)
 
-- 《HTML5 权威指南》
-- MDN 参考文档
+- [《HTML5 权威指南》](https://www.ituring.com.cn/book/931)
+- [WHATWG 参考文档](https://whatwg-cn.github.io/html/)
+- [MDN 参考文档](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
+- 前端核心知识进阶
 - 其他

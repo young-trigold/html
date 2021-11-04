@@ -1,6 +1,6 @@
 ```json
 {
-  "item": "HTML5 秘籍",
+  "item": "HTML5 权威指南",
   "priority": 3,
   "span": "1 week",
   "plan": "2 chapter/ 1 day"

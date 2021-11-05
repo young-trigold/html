@@ -14,9 +14,10 @@
     - [2.3.3. body](#233-body)
   - [2.4. HTML 实体](#24-html-实体)
   - [2.5. 全局属性](#25-全局属性)
+    - [tabIndx](#tabindx)
     - [2.5.1. accessKey](#251-accesskey)
     - [2.5.2. contentEditable](#252-contenteditable)
-    - [2.5.3. contextMenu](#253-contextmenu)
+    - [hidden](#hidden)
 
 # 2. HTML 基础
 
@@ -188,6 +189,27 @@ head 元素用来放置文档元信息元素，而 body 元素放置的元素就
 
 前面讲过全局属性可以用于所有的 HTML 元素，本节涉及了一些常用的全局属性。
 
+### tabIndx
+
+tabIndex 全局属性可以指定使用键盘上的 Tab 键转移焦点索引。例如：
+
+```html
+  <body>
+    <button tabindex="-1">点击我！</button>
+    <label >
+      User Name
+      <input type="text" tabindex="1"/>
+    </label>
+
+    <label >
+      Password
+      <input type="password" tabindex="2"/>
+    </label>
+  </body>
+```
+
+在这个例子中，我们为 button 设置了 tabIndex 为 -1，这就意味着 button 不能通过 tab 键转移到焦点。而其他两个 Input 分别设置了 tabIndex 为 1 和 2，这样在用 tab 切换焦点时，我们就可以先切换到用户名字段，再到密码字段。
+
 ### 2.5.1. accessKey
 
 accessKey 为元素设置了焦点键盘快捷键。用户可以通过键盘快捷键将焦点方便地转到元素。不同地浏览器快捷键可能不同，详情参考[这篇文章](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey)。Chrome 浏览器可以使用 Alt + accessKet 的方式。
@@ -219,4 +241,5 @@ MDN 的[这篇文章](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Ed
 
 ![2-7-contentEditable](illustrations/2-7-contentEditable.png)
 
-### 2.5.3. contextMenu
+### hidden
+

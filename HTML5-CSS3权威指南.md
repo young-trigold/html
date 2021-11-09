@@ -81,6 +81,8 @@
     - [3.4.1. 绝对单位](#341-绝对单位)
     - [3.4.2. 相对单位](#342-相对单位)
   - [3.5. 其他单位](#35-其他单位)
+    - [3.5.1. 角度](#351-角度)
+    - [3.5.2. 时间](#352-时间)
 
 # 1. HTML5 简介
 
@@ -1561,7 +1563,230 @@ span {
 
 下面我们具体看一下这些相对单位。
 
+1. **em 与 rem**
 
+em 单位的使用有两种情况：
+
+- em 作为本元素的非 font-size 属性。此时，em 的大小就是本元素的字号大小。
+- em 作为本元素的 font-size 属性。此时，em 的大小为父元素的字号大小。
+
+来看下面几个例子。
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-size: 20px;
+        height: fit-content;
+        border: 1px black solid;
+        margin: 1em;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    一段文本
+  </body>
+</html>
+```
+
+这个例子中，我们改写了 body 的 margin 属性，这个属性的用户代理样式为 8px，现在改写为 1em。显然 margin 不是 font-size，因此它的大小就是 body 字体的大小，因此，我们可以看到这里的 1em = 20 px。当我们修改了本元素的字体时，margin 也会跟着变化。
+
+再来看一个例子：
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-size: 20px;
+        margin: 0px;
+      }
+
+      span {
+        font-size: 1em;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <span>一段文本</span>
+  </body>
+</html>
+```
+
+这个例子中，span 元素最近的父元素为 body，span 元素的 font-size 属性值为 1em，因此这个大小就是父元素字号的大小：20px。
+
+rem 则和 em 不同，它只相对于 html 元素（根元素）的字号大小。
+
+来看这个例子：
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      html {
+        font-size: 20px;
+      }
+      body {
+        font-size: 16px;
+        margin: 0px;
+      }
+      span {
+        font-size: 1rem;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <span>一段文本</span>
+  </body>
+</html>
+```
+
+在这个例子中，span 的 font-size 属性被设置为 1rem，而 html 元素的 font-size 被设置为 20px。因此，这里的 1rem = 20px。而不是 16px。
+
+2. **vw 与 vh**
+
+1vw 代表视口宽度的 1%。而 1vh 表示视口高度的 1%。
+
+视口 (viewport) 代表当前可见的计算机图形区域。在 Web 浏览器术语中，通常与浏览器窗口相同，但不包括浏览器的 UI， 菜单栏等——即指你正在浏览的文档的那一部分。
+
+文档，比如这篇文章，可能会非常长。你的 viewport 就是你现在所能见到的所有事物。值得注意的是“什么是视口区域”这个问题，页面中的一些导航菜单也包括在其中。Viewport 的大小取决于屏幕的大小，无论浏览器是否处于全屏模式，是否被用户缩放了。Viewport 外的区域，比如这个文档的 See Also 部分，可能需要滚动到其所在的区域才会出现在屏幕上。
+
+- 在尺寸较大的设备中，在这些设备上，应用显示区域不一定是全屏的，viewport 是浏览器窗口的大小。
+- 在大多数移动设备中，浏览器是全屏的，viewport 是整个屏幕的大小。
+- 在全屏模式下，viewport 是设备屏幕的范围，窗口是浏览器窗口，浏览器窗口大小小于或等于视口的大小，并且文档是这个网站，文档的大小可比 viewport 长或宽。
+
+概括地说，viewport 基本上是当前文档的可见部分。
+
+在实测中，innerWidth 和 outerWidth 是相同的，但是 outerHeight 比 innerHeight 高 100px。这是因为 outerHeight 的测量包括浏览器框架在内，包括了地址栏和书签栏总共 100px 的高度，而浏览器没有左右边框。
+
+innerHeight 和 innerWidth 所组成的区域通常被认为是布局视口 (layout viewport)。浏览器的框架不被认为是 viewport 的一部分。
+
+Web 浏览器包含两个 viewport，**布局视口(layout viewport)** 和 **视觉视口(visual viewport)**。visual viewport 指当前浏览器中可见的部分，并且可以变化。当使用触屏双指缩放，当动态键盘在手机上弹出的时候，或者之前隐藏的地址栏变得可见的时候，visual viewport 缩小了，但是 layout viewport 却保持不变。
+
+我们上面说到的固定的头部和尾部，固定在 layout viewport 的底部和顶部，所以当 visual viewport 缩小的时候,头部和尾部仍保留在视觉中。当你缩放页面时，布局视口可能不能被全部看到。如果你放大布局视口的中间部分，内容将在四个方向上扩展。如果你有一个固定的头部和底部，它们依然固定在布局视口的顶部和底部，因此它们可能会在设备屏幕的底部和顶部不可见-视觉视口。视觉视口是布局视口当前的可见部分如果你向下滚动，视觉视口的内容就会改变，并布局视口的底部就会滚动到可视区域。
+
+视觉视口是屏幕的可视部分，不包括屏幕键盘，缩放外的区域。视觉视口比布局视口相同或者更小
+
+对于一个包含框架，objects 或外部 svg 的页面，两者都有它们自己的 window 对象，只有最外层的 window 的视觉视口不同于布局视口。对于包含的文档，视觉视口与布局视口是相同的。
+
+来看一个例子：
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0px;
+        background-color: #eeffee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20em;
+        color: #ffeef8;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <span>居中文字</span>
+  </body>
+</html>
+```
+
+这个例子中，我们将 body 的 width 设置为 100vw，高度设置为 100vh，margin 为 0px。这样 body 就占满了整个可见视口。接着我们将 body 设置为 flexbox，并居中字体。
+
+vmin 和 vmax 和我们讲的上述单位很相似。但是也考虑到了屏幕旋转的影响。vmin 指的是可见视口中长度和宽度中较小的一个，vmax 则是较大的一个。
+
+3. **%**
+
+可以把一个度量单位表示为其他属性值的百分比，这正是%单位的用途。50%这个单位是相对于父元素的对应属性的大小而言的。
+
+来看这个例子。
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      html {
+        height: 100%;
+        background-color: skyblue;
+      }
+
+      body {
+        margin: 0px;
+        width: 50%;
+        height: 50%;
+        background-color: blueviolet;
+      }
+
+      #target {
+        width: 50%;
+        height: 50%;
+        background-color: aliceblue;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="target"></div>
+  </body>
+</html>
+```
+
+这个例子中，html，body，div 的宽度和长度都是上一个 1/2。使用百分比单位会遇到两个麻烦。一是并非所有属性都能用这个单位。二是对于能用百分比单位的属性，那个百分比挂钩的其他属性各不相同。例如，对于 font-size 属性，挂钩的是元素继承到的 font-size 值；而对于 width 属性，挂钩的则是元素的包含块的宽度。
+
+4. **cal()**
+
+允许将 CSS 属性值设置为算式是 CSS3 定义的一个引人关注的特性。这种灵活手段在控制能力和精确程度方面都给样式设计工作提供了帮助。calc() 此 CSS 函数允许在声明 CSS 属性值时执行一些计算。它可以用在如下场合：`<length>`、`<frequency>`, `<angle>`、`<time>`、`<percentage>`、`<number>`、或 `<integer>`。
+
+来看这个例子。
+
+```css
+/* property: calc(expression) */
+width: calc(100% - 80px);
+```
+
+此 calc()函数用一个表达式作为它的参数，用这个表达式的结果作为值。这个表达式可以是任何如下操作符的组合，采用标准操作符处理法则的简单表达式。
+
++: 加法。
+-: 减法。
+\*: 乘法，乘数中至少有一个是 `<number>`。
+/: 除法，除数（/ 右面的数）必须是 `<number>`。
+
+表达式中的运算对象可以使用任意 `<length>` 值。如果你愿意，你可以在一个表达式中混用这类值的不同单位。在需要时，你还可以使用小括号来建立计算顺序。
 
 ## 3.5. 其他单位
+
+CSS 中的单位不止有长度这一项，而是种类繁多。但是其中只有一小部分得到了广泛应用。下面要介绍的是本书用到的那些单位。
+
+### 3.5.1. 角度
+
+角度这种单位在旋转变换时可以用到。角度的表示方式是一个数字后跟一个单位，如 360deg。数字可以是负数，负数表示逆时针，而正数表示顺时针。
+
+| 单位 | 说明                                                                                               |
+| ---- | -------------------------------------------------------------------------------------------------- |
+| deg  | 度。一个完整的圆是 360deg。例：0deg，90deg，14.23deg。                                             |
+| grad | 百分度。一个完整的圆是 400grad。例：0grad，100grad，38.8grad。                                     |
+| rad  | 弧度。一个完整的圆是 2π 弧度，约等于 6.2832rad。1rad 是 180/π 度。例：0rad，1.0708rad，6.2832rad。 |
+| turn | 圈数。一个完整的圆是 1turn。例：0turn，0.25turn，1.2turn。                                         |
+
+### 3.5.2. 时间
+
+时间的单位可以在过渡中使用。时间单位包含秒（s）和毫秒（ms）。1秒等于1000毫秒。
 

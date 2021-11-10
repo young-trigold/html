@@ -14,10 +14,15 @@
     - [2.3.3. body](#233-body)
   - [2.4. HTML 实体](#24-html-实体)
   - [2.5. 全局属性](#25-全局属性)
-    - [tabIndx](#tabindx)
-    - [2.5.1. accessKey](#251-accesskey)
-    - [2.5.2. contentEditable](#252-contenteditable)
-    - [hidden](#hidden)
+    - [2.5.1. 选择器属性](#251-选择器属性)
+    - [2.5.2. tabIndx](#252-tabindx)
+    - [2.5.3. accessKey](#253-accesskey)
+    - [2.5.4. contentEditable](#254-contenteditable)
+    - [2.5.5. hidden](#255-hidden)
+    - [2.5.6. lang](#256-lang)
+    - [2.5.7. title](#257-title)
+    - [2.5.8. style](#258-style)
+    - [2.5.9. draggable](#259-draggable)
 
 # 2. HTML 基础
 
@@ -189,28 +194,34 @@ head 元素用来放置文档元信息元素，而 body 元素放置的元素就
 
 前面讲过全局属性可以用于所有的 HTML 元素，本节涉及了一些常用的全局属性。
 
-### tabIndx
+### 2.5.1. 选择器属性
+
+class 和 id 属性可以标记元素的类别和唯一标识符。这在 CSS 选择器以及 JavaScript 中获取和选择元素非常有用。
+
+class 和 id 属性的唯一区别就是 class 属性可以标识一类元素，而 id 属性只可以标识一个元素。
+
+### 2.5.2. tabIndx
 
 tabIndex 全局属性可以指定使用键盘上的 Tab 键转移焦点索引。例如：
 
 ```html
-  <body>
-    <button tabindex="-1">点击我！</button>
-    <label >
-      User Name
-      <input type="text" tabindex="1"/>
-    </label>
+<body>
+  <button tabindex="-1">点击我！</button>
+  <label>
+    User Name
+    <input type="text" tabindex="1" />
+  </label>
 
-    <label >
-      Password
-      <input type="password" tabindex="2"/>
-    </label>
-  </body>
+  <label>
+    Password
+    <input type="password" tabindex="2" />
+  </label>
+</body>
 ```
 
 在这个例子中，我们为 button 设置了 tabIndex 为 -1，这就意味着 button 不能通过 tab 键转移到焦点。而其他两个 Input 分别设置了 tabIndex 为 1 和 2，这样在用 tab 切换焦点时，我们就可以先切换到用户名字段，再到密码字段。
 
-### 2.5.1. accessKey
+### 2.5.3. accessKey
 
 accessKey 为元素设置了焦点键盘快捷键。用户可以通过键盘快捷键将焦点方便地转到元素。不同地浏览器快捷键可能不同，详情参考[这篇文章](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey)。Chrome 浏览器可以使用 Alt + accessKet 的方式。
 
@@ -232,7 +243,7 @@ accessKey 为元素设置了焦点键盘快捷键。用户可以通过键盘快�
 
 这个 html 设计了两个按钮分别带有 accessKey 为 "u" 和 "s"。用户可以通过 Alt + U 将焦点快捷地转到上传按钮上。
 
-### 2.5.2. contentEditable
+### 2.5.4. contentEditable
 
 contentEditable 是 HTML5 新增的属性，这个属性设计的目的是富文本编辑。这个属性可以将一个元素变为可编辑状态。
 这个属性往往要配合 document.execCommand() 方法以实现富文本编辑。
@@ -241,5 +252,121 @@ MDN 的[这篇文章](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Ed
 
 ![2-7-contentEditable](illustrations/2-7-contentEditable.png)
 
-### hidden
+### 2.5.5. hidden
 
+全局属性 hidden 是一个布尔属性，表示一个元素尚未或者不再相关。例如，它可以被用来隐藏一个页面元素直到登录完毕。如果一个元素设置了这个属性，它就不会被显示。
+
+hidden 属性不能用于隐藏那些可以在其它板块中合理显示的内容。 例如，用 hidden 属性去隐藏一个选项卡对话框种的面板是不正确的，因为选项卡界面只不过是溢出显示的一种——一个可以等量于一个只显示所有 form 表单控件的拥有滚动条的大页面。类似地，用 hidden 属性在某个特定板块中隐藏一部分内容也是不正确的，——如果某些内容被标记为隐藏，它将从所有版块中隐藏,包括例如屏幕阅读器.
+
+隐藏元素不应与非隐藏元素链接，作为隐藏元素的后代的元素仍然是活动的，这意味着脚本元素仍然可以执行，表单元素仍然可以提交。
+
+比如说，用 href 标签链接到一个带有 hidden 标签的区块是不对的。 如果这个区块和这个页面不相干，或者这个区块不适用于这个页面，那没有任何理由需要链接到它。
+
+不过，你还是可以使用 ARIA aria-describedby 标签去引用本身是隐藏的一些描述。
+
+类似的，你也可以将一个带有 hidden 标签的 canvas 元素作为屏幕外的缓存区域，或者在表单控件中引用一个已经隐藏的表单。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="target">隐藏文字</div>
+    <button id="btn">切换隐藏</button>
+    <script>
+      const target = document.querySelector('#target');
+      const btn = document.querySelector('#btn');
+
+      btn.addEventListener('click', () => {
+        if (target.hasAttribute('hidden')) {
+          target.removeAttribute('hidden');
+        } else {
+          target.setAttribute('hidden', 'hidden');
+        }
+      });
+    </script>
+  </body>
+</html>
+```
+
+上面的代码中，通过切换隐藏按钮可以将 div 在隐藏和不隐藏之间切换。
+
+### 2.5.6. lang
+
+lang 全局属性参与了元素语言的定义。这个语言是不可编辑元素写入的语言，或者可编辑元素应该写入的语言。标签包含单个条目，值的格式由 用于定义语言的标签 (BCP47) IETF 文档定义。如果标签的内容是空字符串，语言就设为未知。如果标签内容是无效的，根据 BCP47，它就设为无效。
+
+通常在 html 元素上添加 lang 属性可以为整个网页指定语言，你也可以在单独的块上添加 lang 属性，这样语言效果只局限于这个块。
+
+```html
+<html lang="zh-Hans"></html>
+```
+
+### 2.5.7. title
+
+title 全局属性 包含了表示咨询信息文本，和它属于的元素相关。这个信息通常存在，但绝不必要，作为提示信息展示给用户。一些典型用例：
+
+链接：被链接文档的标题或描述
+媒体元素，例如图像：描述或关联信息
+段落：脚注或者相关的评论
+引用：作者信息，以及其他
+如果省略了这个属性，就意味着这个元素的最近祖先的标题仍然是相关的（并且可以用作元素的提示信息）。如果这个属性设为空字符串，它就明确意味着，它的最近祖先的标题是不相关的（并且不应用于这个元素的提示信息）。
+
+### 2.5.8. style
+
+style 全局属性可以为单个元素指定它的样式，这种指定样式的方式优先级更高。
+
+例如：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #target {
+        background-color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <span id="target" style="background-color: skyblue;">一段文本</span>
+  </body>
+</html>
+```
+
+在这个例子中，div 的背景颜色为天蓝色而不是粉红色。
+
+### 2.5.9. draggable
+
+全局属性 draggable 是一个枚举类型的属性，用于标识元素是否允许使用 拖放操作 API (en-US) 拖动。它的取值如下：
+
+true，表示元素可以被拖动
+false，表示元素不可以被拖动
+如果该属性没有设值，则默认值 为 auto ，表示使用浏览器定义的默认行为。
+
+这个属性是枚举类型，而不是 布尔类型 。这意味着必须显式指定值为 true 或者 false ，像 `<label draggable>Example Label</label>` 这样的简写是不允许的。正确的用法是 `<label draggable="true">Example Label</label>`。
+
+默认情况下，只有已选中的文本、图片、链接可以拖动。对其它的元素来说，必须按拖动机制的顺序设置 ondragstart 事件才能正常工作。
+
+```html
+<p
+  draggable="true"
+  ondragstart="event.dataTransfer.setData('text/plain', 'This text may be dragged')"
+>
+  This text
+  <strong>may</strong>
+  be dragged.
+</p>
+```
+
+属性 draggable 设置为 "true"，所以这个元素变成可拖拽的。如果该属性被省略或被设置为 "false"，则该元素将不可拖拽，此时拖拽只会选中文本。
+
+draggable 属性可在任意元素上设置，包括图像和链接。然而，对于后两者，该属性的默认值是 true，所以你只会在禁用这二者的拖拽时使用到 draggable 属性，将其设置为 false。

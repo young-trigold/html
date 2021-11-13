@@ -36,14 +36,13 @@
   - [2.4. HTML 实体](#24-html-实体)
   - [2.5. 全局属性](#25-全局属性)
     - [2.5.1. 选择器属性](#251-选择器属性)
-    - [2.5.2. tabIndx](#252-tabindx)
-    - [2.5.3. accessKey](#253-accesskey)
-    - [2.5.4. contentEditable](#254-contenteditable)
-    - [2.5.5. hidden](#255-hidden)
-    - [2.5.6. lang](#256-lang)
-    - [2.5.7. title](#257-title)
+    - [2.5.2. 键盘快捷键属性](#252-键盘快捷键属性)
+    - [2.5.3. contentEditable](#253-contenteditable)
+    - [2.5.4. hidden](#254-hidden)
+    - [2.5.5. lang](#255-lang)
+    - [2.5.6. title](#256-title)
+    - [2.5.7. draggable](#257-draggable)
     - [2.5.8. style](#258-style)
-    - [2.5.9. draggable](#259-draggable)
 - [3. CSS 基础](#3-css-基础)
   - [3.1. 定义和应用样式](#31-定义和应用样式)
     - [3.1.1. CSS 声明](#311-css-声明)
@@ -338,7 +337,9 @@ class 和 id 属性可以标记元素的类别和唯一标识符。这在 CSS �
 
 class 和 id 属性的唯一区别就是 class 属性可以标识一类元素，而 id 属性只可以标识一个元素。
 
-### 2.5.2. tabIndx
+### 2.5.2. 键盘快捷键属性
+
+1. **tabIndx**
 
 tabIndex 全局属性可以指定使用键盘上的 Tab 键转移焦点索引。例如：
 
@@ -359,7 +360,7 @@ tabIndex 全局属性可以指定使用键盘上的 Tab 键转移焦点索引。
 
 在这个例子中，我们为 button 设置了 tabIndex 为 -1，这就意味着 button 不能通过 tab 键转移到焦点。而其他两个 Input 分别设置了 tabIndex 为 1 和 2，这样在用 tab 切换焦点时，我们就可以先切换到用户名字段，再到密码字段。
 
-### 2.5.3. accessKey
+2. **accessKey**
 
 accessKey 为元素设置了焦点键盘快捷键。用户可以通过键盘快捷键将焦点方便地转到元素。不同地浏览器快捷键可能不同，详情参考[这篇文章](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey)。Chrome 浏览器可以使用 Alt + accessKet 的方式。
 
@@ -381,7 +382,7 @@ accessKey 为元素设置了焦点键盘快捷键。用户可以通过键盘快�
 
 这个 html 设计了两个按钮分别带有 accessKey 为 "u" 和 "s"。用户可以通过 Alt + U 将焦点快捷地转到上传按钮上。
 
-### 2.5.4. contentEditable
+### 2.5.3. contentEditable
 
 contentEditable 是 HTML5 新增的属性，这个属性设计的目的是富文本编辑。这个属性可以将一个元素变为可编辑状态。
 这个属性往往要配合 document.execCommand() 方法以实现富文本编辑。
@@ -390,7 +391,7 @@ MDN 的[这篇文章](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Ed
 
 ![2-7-contentEditable](illustrations/2-7-contentEditable.png)
 
-### 2.5.5. hidden
+### 2.5.4. hidden
 
 全局属性 hidden 是一个布尔属性，表示一个元素尚未或者不再相关。例如，它可以被用来隐藏一个页面元素直到登录完毕。如果一个元素设置了这个属性，它就不会被显示。
 
@@ -434,7 +435,7 @@ hidden 属性不能用于隐藏那些可以在其它板块中合理显示的内�
 
 上面的代码中，通过切换隐藏按钮可以将 div 在隐藏和不隐藏之间切换。
 
-### 2.5.6. lang
+### 2.5.5. lang
 
 lang 全局属性参与了元素语言的定义。这个语言是不可编辑元素写入的语言，或者可编辑元素应该写入的语言。标签包含单个条目，值的格式由 用于定义语言的标签 (BCP47) IETF 文档定义。如果标签的内容是空字符串，语言就设为未知。如果标签内容是无效的，根据 BCP47，它就设为无效。
 
@@ -444,7 +445,7 @@ lang 全局属性参与了元素语言的定义。这个语言是不可编辑元
 <html lang="zh-Hans"></html>
 ```
 
-### 2.5.7. title
+### 2.5.6. title
 
 title 全局属性 包含了表示咨询信息文本，和它属于的元素相关。这个信息通常存在，但绝不必要，作为提示信息展示给用户。一些典型用例：
 
@@ -453,6 +454,32 @@ title 全局属性 包含了表示咨询信息文本，和它属于的元素相�
 段落：脚注或者相关的评论
 引用：作者信息，以及其他
 如果省略了这个属性，就意味着这个元素的最近祖先的标题仍然是相关的（并且可以用作元素的提示信息）。如果这个属性设为空字符串，它就明确意味着，它的最近祖先的标题是不相关的（并且不应用于这个元素的提示信息）。
+### 2.5.7. draggable
+
+全局属性 draggable 是一个枚举类型的属性，用于标识元素是否允许使用 拖放操作 API (en-US) 拖动。它的取值如下：
+
+true，表示元素可以被拖动
+false，表示元素不可以被拖动
+如果该属性没有设值，则默认值 为 auto ，表示使用浏览器定义的默认行为。
+
+这个属性是枚举类型，而不是 布尔类型 。这意味着必须显式指定值为 true 或者 false ，像 `<label draggable>Example Label</label>` 这样的简写是不允许的。正确的用法是 `<label draggable="true">Example Label</label>`。
+
+默认情况下，只有已选中的文本、图片、链接可以拖动。对其它的元素来说，必须按拖动机制的顺序设置 ondragstart 事件才能正常工作。
+
+```html
+<p
+  draggable="true"
+  ondragstart="event.dataTransfer.setData('text/plain', 'This text may be dragged')"
+>
+  This text
+  <strong>may</strong>
+  be dragged.
+</p>
+```
+
+属性 draggable 设置为 "true"，所以这个元素变成可拖拽的。如果该属性被省略或被设置为 "false"，则该元素将不可拖拽，此时拖拽只会选中文本。
+
+draggable 属性可在任意元素上设置，包括图像和链接。然而，对于后两者，该属性的默认值是 true，所以你只会在禁用这二者的拖拽时使用到 draggable 属性，将其设置为 false。
 
 ### 2.5.8. style
 
@@ -482,32 +509,6 @@ style 全局属性可以为单个元素指定它的样式，这种指定样式�
 
 在这个例子中，div 的背景颜色为天蓝色而不是粉红色。
 
-### 2.5.9. draggable
-
-全局属性 draggable 是一个枚举类型的属性，用于标识元素是否允许使用 拖放操作 API (en-US) 拖动。它的取值如下：
-
-true，表示元素可以被拖动
-false，表示元素不可以被拖动
-如果该属性没有设值，则默认值 为 auto ，表示使用浏览器定义的默认行为。
-
-这个属性是枚举类型，而不是 布尔类型 。这意味着必须显式指定值为 true 或者 false ，像 `<label draggable>Example Label</label>` 这样的简写是不允许的。正确的用法是 `<label draggable="true">Example Label</label>`。
-
-默认情况下，只有已选中的文本、图片、链接可以拖动。对其它的元素来说，必须按拖动机制的顺序设置 ondragstart 事件才能正常工作。
-
-```html
-<p
-  draggable="true"
-  ondragstart="event.dataTransfer.setData('text/plain', 'This text may be dragged')"
->
-  This text
-  <strong>may</strong>
-  be dragged.
-</p>
-```
-
-属性 draggable 设置为 "true"，所以这个元素变成可拖拽的。如果该属性被省略或被设置为 "false"，则该元素将不可拖拽，此时拖拽只会选中文本。
-
-draggable 属性可在任意元素上设置，包括图像和链接。然而，对于后两者，该属性的默认值是 true，所以你只会在禁用这二者的拖拽时使用到 draggable 属性，将其设置为 false。
 
 # 3. CSS 基础
 

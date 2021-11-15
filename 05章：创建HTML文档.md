@@ -13,7 +13,7 @@
     - [5.2.4. style](#524-style)
     - [5.2.5. link](#525-link)
     - [5.2.6. script](#526-script)
-    - [5.2.7. noscript](#527-noscript)
+    - [5.2.7. noscript=\]](#527-noscript)
 
 # 5. 创建 HTML 文档
 
@@ -265,4 +265,4 @@ style元素可用来定义HTML文档的内部样式表(link元素则是用来导
 
 ### 5.2.6. script
 
-### 5.2.7. noscript
+### 5.2.7. noscript=\]

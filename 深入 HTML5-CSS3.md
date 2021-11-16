@@ -93,8 +93,18 @@
   - [6.3. aside](#63-aside)
   - [6.4. footer](#64-footer)
     - [6.4.1. address](#641-address)
-  - [6.2.4. details 和 summary](#624-details-和-summary)
+  - [6.5. details 和 summary](#65-details-和-summary)
 - [7. 内容分组](#7-内容分组)
+  - [7.1. div](#71-div)
+  - [7.2. 列表](#72-列表)
+    - [7.2.1. ol](#721-ol)
+    - [7.2.2. ul](#722-ul)
+    - [7.2.3. li](#723-li)
+  - [7.3. p](#73-p)
+  - [7.4. pre](#74-pre)
+  - [7.5. blockquote](#75-blockquote)
+  - [7.6. hr](#76-hr)
+  - [7.7. figure 和 figcaption](#77-figure-和-figcaption)
 - [8. 文本元素](#8-文本元素)
 - [9. 表单](#9-表单)
 - [10. 表格](#10-表格)
@@ -2349,7 +2359,7 @@ HTML `<address>` 元素表示其中的 HTML 提供了某个人或某个组织（
 
 这个元素不能包含除联系信息之外的任何信息，比如出版日期（这应当被包含在 `<time>` 元素之中）。通常，`<address>` 元素可以放在 `<footer>` 元素之中（如果存在的话）。
 
-## 6.2.4. details 和 summary
+## 6.5. details 和 summary
 
 HTML `<details>` 元素可创建一个挂件，仅在被切换成展开状态时，它才会显示内含的信息。`<summary>` 元素可为该部件提供概要或者标签。
 
@@ -2383,6 +2393,66 @@ open 属性是一个布尔属性，使用它，可以使 details 挂件一开始
 IE 浏览器不支持这个元素。
 
 # 7. 内容分组
+
+本章介绍的是用来组织相关内容的 HTML 元素，它们能够给予文档内容更多的结构和含义。本章中的元素大多数是流元素，只有一个例外：a 元素。该元素独特之处在于其所属元素类型取决于其包含的内容。
+
+## 7.1. div
+
+HTML `<div>` 元素 (或 HTML 文档分区元素) 是一个通用型的流内容容器，在不使用 CSS 的情况下，其对内容或布局没有任何影响。
+
+作为一个“纯粹的”容器，`<div>` 元素在语义上不表示任何特定类型的内容。然而，其可以将内容分组，从而可以使用 class 或是 id 属性方便的定义内容的格式，也可以在一段文档中划分标记出使用另一种语言书写的内容（使用 lang 属性）等等。
+
+下表总结了 div 元素。
+
+| 元素         | div                      |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 可以包含流元素的任何元素 |
+| 局部属性     | 无                       |
+| 内容         | 流元素                   |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | display: block;          |
+
+下面的示例展示了 div 的用法。
+
+```css
+.shadowbox {
+  width: 15em;
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  padding: 8px 12px;
+  background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+}
+```
+
+```html
+<div class="shadowbox">
+  <p>Here's a very interesting note displayed in a lovely shadowed box.</p>
+</div>
+```
+
+## 7.2. 列表
+
+HTML 定义了几个用来生成内容项目列表的元素。列表的类型有有序列表、无序列表和说明列表，详见后述。
+
+### 7.2.1. ol
+
+HTML `<ol>` 元素表示有序列表，通常渲染为一个带编号的列表。列表项目用 li 元素表示（随后会有介绍）。
+
+### 7.2.2. ul
+
+### 7.2.3. li
+
+## 7.3. p
+
+## 7.4. pre
+
+## 7.5. blockquote
+
+## 7.6. hr
+
+## 7.7. figure 和 figcaption
 
 # 8. 文本元素
 

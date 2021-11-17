@@ -2440,17 +2440,308 @@ HTML 定义了几个用来生成内容项目列表的元素。列表的类型有
 
 HTML `<ol>` 元素表示有序列表，通常渲染为一个带编号的列表。列表项目用 li 元素表示（随后会有介绍）。
 
+下表总结了 ol 元素。
+
+| 元素         | ol                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------ |
+| 元素类型     | 流                                                                                   |
+| 父元素       | 可以包含流元素的任何元素                                                             |
+| 局部属性     | reversed, start, type                                                                |
+| 内容         | 0 或多个 li 元素                                                                     |
+| 标签         | 开始标签+内容+结束标签                                                               |
+| 关于 html5   | reversed 属性是 HTML5 中新增的。HTMIA 不赞成使用的 start 和 type 属性在 HTML5 中恢复 |
+| 用户代理样式 | 见下                                                                                 |
+
+ol 的用户代理样式为：
+
+```css
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+```
+
+下面的示例展示了 ol 的用法。
+
+```html
+<ol>
+  <li>项目1</li>
+  <li>项目2</li>
+  <li>项目3</li>
+</ol>
+```
+
+1. **reversed**
+
+如果使用了 reversed 属性，那么列表编号采用降序。
+
+2. **start**
+
+一个整数值属性，指定了列表编号的起始值。此属性的值应为阿拉伯数字，尽管列表条目的编号类型 type 属性可能指定为了罗马数字编号等其他类型的编号。比如说，想要让元素的编号从英文字母 "d" 或者罗马数字 "iv" 开始，都应当使用 start="4"。
+
+这个属性在 HTML4 中弃用，但是在 HTML5 中被重新引入。
+
+3. **type**
+
+设置编号的类型：
+
+a 表示小写英文字母编号
+A 表示大写英文字母编号
+i 表示小写罗马数字编号
+I 表示大写罗马数字编号
+1 表示数字编号（默认）
+
+编号类型适用于整个列表，除非在 `<ol>` 元素的 `<li>` 元素中使用不同的 type 属性。
+
+这个属性在 HTML4 中弃用，但是在 HTML5 中被重新引入。除非列表中序号很重要（比如，在法律或者技术文件中条目通常被需要所引用），否则请使用 CSS list-style-type 属性替代。
+
 ### 7.2.2. ul
+
+ul 元素表示无序列表。与 ol 元素一样，ul 元素中的列表项用 li 元素（后文将有介绍）表示。
+
+| 元素         | ul                       |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 可以包含流元素的任何元素 |
+| 局部属性     | 无                       |
+| 内容         | 0 或多个 li 元素         |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | 见下                     |
+
+ul 的用户代理样式为：
+
+```css
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+```
 
 ### 7.2.3. li
 
+li 元素表示列表中的项目。它可以与 ul、ol 和 menu 元素搭配使用。
+
+下表概括了 li 元素。
+
+| 元素         | li                                                    |
+| ------------ | ----------------------------------------------------- |
+| 元素类型     | 无                                                    |
+| 父元素       | ul, ol, menu                                          |
+| 局部属性     | value                                                 |
+| 内容         | 流元素                                                |
+| 标签         | 开始标签+内容+结束标签                                |
+| 关于 html5   | 无                                                    |
+| 用户代理样式 | display: list-item; text-align: -webkit-match-parent; |
+
+li 元素非常简单，它表示父元素中的一个列表项。其 value 属性可以用来生成不连续的有序列表。
+
+1. **value**
+
+这个整数型属性表明了本 `<li>` 元素在有序列表 （由 `<ol>` 元素定义）中的序号。本属性值只能用数字，即使列表使用罗马数字或字母来展示。随后的列表条目会从设置的值开始计数。value 属性对于无序列表 (`<ul>`) 或者菜单 (`<menu>`) 无效。
+
+```html
+<ol type="I">
+  <li value="3">third item</li>
+  <li>fourth item</li>
+  <li>fifth item</li>
+</ol>
+```
+
 ## 7.3. p
+
+HTML `<p>`元素（或者说 HTML 段落元素）表示文本的一个段落。该元素通常表现为一整块与相邻文本分离的文本，或以垂直的空白隔离或以首行缩进。
+
+| 元素         | p                        |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | 无                       |
+| 内容         | 短语元素                 |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | 想见下                   |
+
+p 的用户代理样式为：
+
+```css
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+```
 
 ## 7.4. pre
 
+pre 元素可以改变浏览器处理内容的方式，阻止合并空白字符，让源文档中的格式得以保留。这在文档中有一部分内容的原始格式意义重大时可以排上用场。除此之外最好不要使用这个元素，这是因为它削弱了通过使用元素和样式来控制呈现结果这一机制的灵活性。
+
+下表概括了 pre 元素。
+
+| 元素         | pre                      |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | 无                       |
+| 内容         | 短语元素                 |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | 见下                     |
+
+pre 的用户代理样式为：
+
+```css
+pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0px;
+}
+```
+
+下面的示例展示了 pre 的用法：
+
+```html
+<pre>
+  L          TE
+    A       A
+      C    V
+       R A
+       DOU
+       LOU
+      REUSE
+      QUE TU
+      PORTES
+    ET QUI T'
+    ORNE O CI
+     VILISÉ
+    OTE-  TU VEUX
+     LA    BIEN
+    SI      RESPI
+            RER       - Apollinaire
+</pre>
+```
+
 ## 7.5. blockquote
 
+blockquote 元素表示引自他处的一片内容。通常在渲染时，这部分的内容会有一定的缩进。
+
+下表概括了 blockquote 元素。
+
+| 元素         | blockquote               |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | cite                     |
+| 内容         | 流元素                   |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | 见下                     |
+
+用户代理样式如下：
+
+```css
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+```
+
+1. **cite**
+
+该元素的 cite 属性可以用来指定所引用的内容的来源。
+
+下面的示例展示了 blockquote 的用法。
+
+```html
+<blockquote cite="https://tools.ietf.org/html/rfc1149">
+  <p>
+    Avian carriers can provide high delay, low throughput, and low altitude
+    service. The connection topology is limited to a single point-to-point path
+    for each carrier, used with standard carriers, but many carriers can be used
+    without significant interference with each other, outside of early spring.
+    This is because of the 3D ether space available to the carriers, in contrast
+    to the 1D ether used by IEEE802.3. The carriers have an intrinsic collision
+    avoidance system, which increases availability.
+  </p>
+</blockquote>
+```
+
 ## 7.6. hr
+
+HTML `<hr>` 元素表示段落级元素之间的主题转换（例如，一个故事中的场景的改变，或一个章节的主题的改变）。
+
+在 HTML 的早期版本中，它是一个水平线。现在它仍能在可视化浏览器中表现为水平线，但目前被定义为语义上的，而不是表现层面上。所以如果想画一条横线，请使用适当的 css 样式来修饰。
+
+| 元素         | hr                       |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | 无                       |
+| 内容         | 无                       |
+| 标签         | 开始标签                 |
+| 关于 html5   | hr 的局部属性被废弃      |
+| 用户代理样式 | 见下                     |
+
+hr 的用户代理样式如下：
+
+```css
+hr {
+  display: block;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px;
+}
+```
+
+下面的示例展示了 hr 的用法。
+
+```html
+<p>§1: The first rule of Fight Club is: You do not talk about Fight Club.</p>
+
+<hr />
+
+<p>§2: The second rule of Fight Club is: Always bring cupcakes.</p>
+```
+
+```css
+hr {
+  border: none;
+  border-top: 3px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+hr:after {
+  background: #fff;
+  content: '§';
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
+```
 
 ## 7.7. figure 和 figcaption
 

@@ -106,6 +106,27 @@
   - [7.6. hr](#76-hr)
   - [7.7. figure 和 figcaption](#77-figure-和-figcaption)
 - [8. 文本元素](#8-文本元素)
+  - [8.1. span](#81-span)
+  - [8.2. a](#82-a)
+  - [8.3. 基本文本元素](#83-基本文本元素)
+    - [8.3.1. b](#831-b)
+    - [8.3.2. i](#832-i)
+    - [8.3.3. s](#833-s)
+    - [8.3.4. u](#834-u)
+    - [8.3.5. strong](#835-strong)
+    - [8.3.6. em](#836-em)
+    - [8.3.7. sup 和 sub](#837-sup-和-sub)
+    - [8.3.8. small](#838-small)
+  - [8.4. 换行](#84-换行)
+    - [8.4.1. 强制换行 br](#841-强制换行-br)
+    - [8.4.2. 安全换行 wbr](#842-安全换行-wbr)
+  - [8.5. 代码相关](#85-代码相关)
+  - [8.6. 论文相关](#86-论文相关)
+    - [8.6.1. 缩写](#861-缩写)
+    - [8.6.4. 定义术语](#864-定义术语)
+    - [8.6.2. 标题引用](#862-标题引用)
+    - [8.6.3. 引文](#863-引文)
+  - [8.7. 注音](#87-注音)
 - [9. 表单](#9-表单)
 - [10. 表格](#10-表格)
 - [11. 嵌入内容](#11-嵌入内容)
@@ -2440,21 +2461,832 @@ HTML 定义了几个用来生成内容项目列表的元素。列表的类型有
 
 HTML `<ol>` 元素表示有序列表，通常渲染为一个带编号的列表。列表项目用 li 元素表示（随后会有介绍）。
 
+下表总结了 ol 元素。
+
+| 元素         | ol                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------ |
+| 元素类型     | 流                                                                                   |
+| 父元素       | 可以包含流元素的任何元素                                                             |
+| 局部属性     | reversed, start, type                                                                |
+| 内容         | 0 或多个 li 元素                                                                     |
+| 标签         | 开始标签+内容+结束标签                                                               |
+| 关于 html5   | reversed 属性是 HTML5 中新增的。HTMIA 不赞成使用的 start 和 type 属性在 HTML5 中恢复 |
+| 用户代理样式 | 见下                                                                                 |
+
+ol 的用户代理样式为：
+
+```css
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+```
+
+下面的示例展示了 ol 的用法。
+
+```html
+<ol>
+  <li>项目1</li>
+  <li>项目2</li>
+  <li>项目3</li>
+</ol>
+```
+
+1. **reversed**
+
+如果使用了 reversed 属性，那么列表编号采用降序。
+
+2. **start**
+
+一个整数值属性，指定了列表编号的起始值。此属性的值应为阿拉伯数字，尽管列表条目的编号类型 type 属性可能指定为了罗马数字编号等其他类型的编号。比如说，想要让元素的编号从英文字母 "d" 或者罗马数字 "iv" 开始，都应当使用 start="4"。
+
+这个属性在 HTML4 中弃用，但是在 HTML5 中被重新引入。
+
+3. **type**
+
+设置编号的类型：
+
+a 表示小写英文字母编号
+A 表示大写英文字母编号
+i 表示小写罗马数字编号
+I 表示大写罗马数字编号
+1 表示数字编号（默认）
+
+编号类型适用于整个列表，除非在 `<ol>` 元素的 `<li>` 元素中使用不同的 type 属性。
+
+这个属性在 HTML4 中弃用，但是在 HTML5 中被重新引入。除非列表中序号很重要（比如，在法律或者技术文件中条目通常被需要所引用），否则请使用 CSS list-style-type 属性替代。
+
 ### 7.2.2. ul
+
+ul 元素表示无序列表。与 ol 元素一样，ul 元素中的列表项用 li 元素（后文将有介绍）表示。
+
+| 元素         | ul                       |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 可以包含流元素的任何元素 |
+| 局部属性     | 无                       |
+| 内容         | 0 或多个 li 元素         |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | 见下                     |
+
+ul 的用户代理样式为：
+
+```css
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+```
 
 ### 7.2.3. li
 
+li 元素表示列表中的项目。它可以与 ul、ol 和 menu 元素搭配使用。
+
+下表概括了 li 元素。
+
+| 元素         | li                                                    |
+| ------------ | ----------------------------------------------------- |
+| 元素类型     | 无                                                    |
+| 父元素       | ul, ol, menu                                          |
+| 局部属性     | value                                                 |
+| 内容         | 流元素                                                |
+| 标签         | 开始标签+内容+结束标签                                |
+| 关于 html5   | 无                                                    |
+| 用户代理样式 | display: list-item; text-align: -webkit-match-parent; |
+
+li 元素非常简单，它表示父元素中的一个列表项。其 value 属性可以用来生成不连续的有序列表。
+
+1. **value**
+
+这个整数型属性表明了本 `<li>` 元素在有序列表 （由 `<ol>` 元素定义）中的序号。本属性值只能用数字，即使列表使用罗马数字或字母来展示。随后的列表条目会从设置的值开始计数。value 属性对于无序列表 (`<ul>`) 或者菜单 (`<menu>`) 无效。
+
+```html
+<ol type="I">
+  <li value="3">third item</li>
+  <li>fourth item</li>
+  <li>fifth item</li>
+</ol>
+```
+
 ## 7.3. p
+
+HTML `<p>`元素（或者说 HTML 段落元素）表示文本的一个段落。该元素通常表现为一整块与相邻文本分离的文本，或以垂直的空白隔离或以首行缩进。
+
+| 元素         | p                        |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | 无                       |
+| 内容         | 短语元素                 |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | 想见下                   |
+
+p 的用户代理样式为：
+
+```css
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+```
 
 ## 7.4. pre
 
+pre 元素可以改变浏览器处理内容的方式，阻止合并空白字符，让源文档中的格式得以保留。这在文档中有一部分内容的原始格式意义重大时可以排上用场。除此之外最好不要使用这个元素，这是因为它削弱了通过使用元素和样式来控制呈现结果这一机制的灵活性。
+
+下表概括了 pre 元素。
+
+| 元素         | pre                      |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | 无                       |
+| 内容         | 短语元素                 |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | 见下                     |
+
+pre 的用户代理样式为：
+
+```css
+pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0px;
+}
+```
+
+下面的示例展示了 pre 的用法：
+
+```html
+<pre>
+  L          TE
+    A       A
+      C    V
+       R A
+       DOU
+       LOU
+      REUSE
+      QUE TU
+      PORTES
+    ET QUI T'
+    ORNE O CI
+     VILISÉ
+    OTE-  TU VEUX
+     LA    BIEN
+    SI      RESPI
+            RER       - Apollinaire
+</pre>
+```
+
 ## 7.5. blockquote
+
+blockquote 元素表示引自他处的一片内容。通常在渲染时，这部分的内容会有一定的缩进。
+
+下表概括了 blockquote 元素。
+
+| 元素         | blockquote               |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | cite                     |
+| 内容         | 流元素                   |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 无                       |
+| 用户代理样式 | 见下                     |
+
+用户代理样式如下：
+
+```css
+blockquote {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+```
+
+1. **cite**
+
+该元素的 cite 属性可以用来指定所引用的内容的来源。
+
+下面的示例展示了 blockquote 的用法。
+
+```html
+<blockquote cite="https://tools.ietf.org/html/rfc1149">
+  <p>
+    Avian carriers can provide high delay, low throughput, and low altitude
+    service. The connection topology is limited to a single point-to-point path
+    for each carrier, used with standard carriers, but many carriers can be used
+    without significant interference with each other, outside of early spring.
+    This is because of the 3D ether space available to the carriers, in contrast
+    to the 1D ether used by IEEE802.3. The carriers have an intrinsic collision
+    avoidance system, which increases availability.
+  </p>
+</blockquote>
+```
 
 ## 7.6. hr
 
+HTML `<hr>` 元素表示段落级元素之间的主题转换（例如，一个故事中的场景的改变，或一个章节的主题的改变）。
+
+在 HTML 的早期版本中，它是一个水平线。现在它仍能在可视化浏览器中表现为水平线，但目前被定义为语义上的，而不是表现层面上。所以如果想画一条横线，请使用适当的 css 样式来修饰。
+
+| 元素         | hr                       |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | 无                       |
+| 内容         | 无                       |
+| 标签         | 开始标签                 |
+| 关于 html5   | hr 的局部属性被废弃      |
+| 用户代理样式 | 见下                     |
+
+hr 的用户代理样式如下：
+
+```css
+hr {
+  display: block;
+  unicode-bidi: isolate;
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px;
+}
+```
+
+下面的示例展示了 hr 的用法。
+
+```html
+<p>§1: The first rule of Fight Club is: You do not talk about Fight Club.</p>
+
+<hr />
+
+<p>§2: The second rule of Fight Club is: Always bring cupcakes.</p>
+```
+
+```css
+hr {
+  border: none;
+  border-top: 3px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+hr:after {
+  background: #fff;
+  content: '§';
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
+```
+
 ## 7.7. figure 和 figcaption
 
+最后要讲的组织元素与插图有关。HTML5 是这样定义插图(figure)的： “一个独立的内容单元，可带标题。通常作为一个整体被文档的主体引用，把它从文档主体中删除也不会影响文档的意思。”这个定义相当笼统，外延不限于传统意义上的插图一某种图表或图示。
+
+插图用 figure 元素定义，概括在下表。
+
+| 元素         | figure                   |
+| ------------ | ------------------------ |
+| 元素类型     | 流                       |
+| 父元素       | 任何可以包含流元素的元素 |
+| 局部属性     | 无                       |
+| 内容         | 流元素，figcaption       |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | HTML5 新增               |
+| 用户代理样式 | 见下                     |
+
+figure 的用户代理样式如下：
+
+```css
+figure {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+```
+
+figcaption 的概括如下表。
+
+| 元素         | figcaption             |
+| ------------ | ---------------------- |
+| 元素类型     | 无                     |
+| 父元素       | figure                 |
+| 局部属性     | 无                     |
+| 内容         | 流元素                 |
+| 标签         | 开始标签+内容+结束标签 |
+| 关于 html5   | HTML5 新增             |
+| 用户代理样式 | display: block;        |
+
+下面的示例展示了两个元素的用法：
+
+```html
+<figure>
+  <img
+    src="https://developer.mozilla.org/static/img/favicon144.png"
+    alt="A robotic monster over the letters MDN."
+  />
+  <figcaption>MDN Logo</figcaption>
+</figure>
+```
+
 # 8. 文本元素
+
+现在将目光从大尺度的、结构性的文档元素转向细粒度层次：文本层面的元素（简称文本元素）。把这些元素加入文本当中，也就引入了结构和含义。在揣摩本章例子的过程中可以明显体会到这一点。
+
+HTML5 规范明确指出：使用元素应该完全从元素的语义出发。但是，为了让大家都过得轻松一点，规范也明确表示：对于某些元素，传统上与其联系在一起的样式也是语义的一部分。这有点敷衍了事的味道，但却有助于保持与旧版 HTML 的兼容。这类元素中有些元素的含义非常明确。例如，cite 元素专门用来引述另一部作品（比如书籍或电影）的标题。然而许多其他元素的含义却比较含糊，实际上与呈现方式颇有瓜葛，有悖 HTML5 标准的目标。
+
+我的建议是务实一点。首先，如果存在符合需求的专用元素就用这种元素。其次，避开那些补了点语义脂粉的呈现性元素（如 b 元素），把呈现工作交给 CSS 打理。最后，不管选择使用什么元素，都要在 HTML 文档中贯彻始终。
+
+## 8.1. span
+
+HTML `<span>` 元素是短语内容的通用行内容器，并没有任何特殊语义。可以使用它来编组元素以达到某种样式意图（通过使用类或者 Id 属性），或者这些元素有着共同的属性，比如 lang。应该在没有其他合适的语义元素时才使用它。
+
+下表总结了 span 元素。
+
+| 元素         | span                       |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 短语元素                   |
+| 标签         | 开始标签+内容+结束标签     |
+| 关于 html5   | 无                         |
+| 用户代理样式 | 无                         |
+
+下面的例子展示了 span 的用法。
+
+```html
+<p>
+  一段
+  <span class="red">文本</span>
+  。
+</p>
+```
+
+```css
+.red {
+  color: red;
+}
+```
+
+## 8.2. a
+
+超链接是 HTML 中的关键特性，是用户赖以在内容中（在同一文档中和不同页面间）导航的基础。
+
+下表总结了 a 元素。
+
+| 元素         | a                                    |
+| ------------ | ------------------------------------ |
+| 元素类型     | 短语，流                             |
+| 父元素       | 可以包含短语元素的任何元素           |
+| 局部属性     | href, hreflang, target, rel, type    |
+| 内容         | 短语元素，流元素                     |
+| 标签         | 开始标签+内容+结束标签               |
+| 关于 html5   | 废弃了过时的属性，恢复了 target 属性 |
+| 用户代理样式 | 见下                                 |
+
+a 元素的用户代理样式如下：
+
+```css
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+```
+
+1. **href**
+
+包含超链接指向的 URL 或 URL 片段。
+
+URL 片段是哈希标记（#）前面的名称，哈希标记指定当前文档中的内部目标位置（HTML 元素的 ID）。URL 不限于基于 Web（HTTP）的文档，也可以使用浏览器支持的任何协议。例如，在大多数浏览器中正常工作的 file:、ftp:和 mailto：。
+
+下面的例子展示了 href 的用法。
+
+```html
+<a href="http://www.google.com/">google</a>
+```
+
+2. **target**
+
+该属性指定在何处显示链接的资源。 取值为标签（tab），窗口（window），或框架（iframe）等浏览上下文的名称或其他关键词。以下关键字具有特殊的意义:
+
+\_self: 当前页面加载，即当前的响应到同一 HTML 4 frame（或 HTML5 浏览上下文）。此值是默认的，如果没有指定属性的话。
+\_blank: 新窗口打开，即到一个新的未命名的 HTML4 窗口或 HTML5 浏览器上下文
+\_parent: 加载响应到当前框架的 HTML4 父框架或当前的 HTML5 浏览上下文的父浏览上下文。如果没有 parent 框架或者浏览上下文，此选项的行为方式与 \_self 相同。
+\_top: IHTML4 中：加载的响应成完整的，原来的窗口，取消所有其它 frame。 HTML5 中：加载响应进入顶层浏览上下文（即，浏览上下文，它是当前的一个的祖先，并且没有 parent）。如果没有 parent 框架或者浏览上下文，此选项的行为方式相同\_self
+
+下面的例子展示了 target 的用法。
+
+```html
+<a href="http://www.google.com/" target="_blank">google</a>
+```
+
+3. **其他属性**
+
+type 指定在一个 MIME type 链接目标的形式的媒体类型。其仅提供建议，并没有内置的功能。
+hreflang 用于指定链接文档的人类语言。其仅提供建议，并没有内置的功能。hreflang 允许的值取决于 HTML5 BCP47。
+
+## 8.3. 基本文本元素
+
+### 8.3.1. b
+
+HTML 提醒注意（Bring Attention To）元素（`<b>`）用于吸引读者的注意到该元素的内容上（如果没有另加特别强调）。这个元素过去被认为是粗体（Boldface）元素，并且大多数浏览器仍然将文字显示为粗体。尽管如此，你不应将 `<b>` 元素用于显示粗体文字；替代方案是使用 CSS font-weight 属性来创建粗体文字。
+
+下表总结了 b 元素。
+
+| 元素         | b                          |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 短语元素                   |
+| 标签         | 开始标签+内容+结束标签     |
+| 关于 html5   | 减少了语义性质             |
+| 用户代理样式 | font-weight: bold;         |
+
+下面的示例展示了 b 元素的用法。
+
+```html
+<p>
+  This article describes several
+  <b>text-level</b>
+  elements. It explains their usage in an
+  <b>HTML</b>
+  document.
+</p>
+Keywords are displayed with the default style of the
+<b>element, likely in bold.</b>
+```
+
+### 8.3.2. i
+
+HTML 元素 `<i>` 用于表现因某些原因需要区分普通文本的一系列文本。例如技术术语、外文短语或是小说中人物的思想活动等，它的内容通常以斜体显示。
+
+下表总结了 i 元素。
+
+| 元素         | i                          |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 短语元素                   |
+| 标签         | 开始标签+内容+结束标签     |
+| 关于 html5   | 减少了语义性质             |
+| 用户代理样式 | font-style: italic;        |
+
+下面的示例展示了 i 元素的用法。
+
+```html
+<p>
+  The Latin phrase
+  <i class="latin">Veni, vidi, vici</i>
+  is often mentioned in music, art, and literature
+</p>
+```
+
+### 8.3.3. s
+
+HTML `<s>` 元素 使用删除线来渲染文本。使用 `<s>` 元素来表示不再相关，或者不再准确的事情。但是当表示文档编辑时，不提倡使用 `<s>` ；为此，提倡使用 `<del>` 和 `<ins>` 元素。
+
+下表总结了 s 元素。
+
+| 元素         | s                              |
+| ------------ | ------------------------------ |
+| 元素类型     | 短语                           |
+| 父元素       | 可以包含短语元素的任何元素     |
+| 局部属性     | 无                             |
+| 内容         | 短语元素                       |
+| 标签         | 开始标签+内容+结束标签         |
+| 关于 html5   | 减少了语义性质                 |
+| 用户代理样式 | text-decoration: line-through; |
+
+下面的示例展示了 s 元素的用法。
+
+```html
+<s>Today's Special: Salmon</s>
+SOLD OUT
+<br />
+<span style="text-decoration:line-through;">Today's Special: Salmon</span>
+SOLD OUT
+```
+
+### 8.3.4. u
+
+u 元素让一段文字从周围内容中凸现出来，但并不表示强调或其重要性有所增加。这个说明很含糊。u 元素以前只具有呈现方面的作用（为文字加上下划线），没有实际的语义。实际上这仍是一个呈现性的元素，其效果是为文字添加下划线。
+
+| 元素         | u                           |
+| ------------ | --------------------------- |
+| 元素类型     | 短语                        |
+| 父元素       | 可以包含短语元素的任何元素  |
+| 局部属性     | 无                          |
+| 内容         | 短语元素                    |
+| 标签         | 开始标签+内容+结束标签      |
+| 关于 html5   | 减少了语义性质              |
+| 用户代理样式 | text-decoration: underline; |
+
+下面的示例展示了 u 元素的用法。
+
+```html
+<p>
+  You could use this element to highlight
+  <u>speling</u>
+  mistakes, so the writer can
+  <u>corect</u>
+  them.
+</p>
+```
+
+```css
+u {
+  text-decoration: #f00 wavy underline;
+}
+```
+
+### 8.3.5. strong
+
+strong 元素表示一段重要文字。
+
+下表总结了 strong 元素。
+
+| 元素         | strong                     |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 短语元素                   |
+| 标签         | 开始标签+内容+结束标签     |
+| 关于 html5   | 无                         |
+| 用户代理样式 | font-weight: bold;         |
+
+下面的示例展示了 strong 的用法。
+
+```html
+<strong>Warning:</strong>
+Eating too many oranges can give you heart burn.
+```
+
+### 8.3.6. em
+
+HTML 着重元素 `<em>` 标记出需要用户着重阅读的内容，`<em>` 元素是可以嵌套的，嵌套层次越深，则其包含的内容被认定为越需要着重阅读。
+
+| 元素         | em                         |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 短语元素                   |
+| 标签         | 开始标签+内容+结束标签     |
+| 关于 html5   | 无                         |
+| 用户代理样式 | font-style: italic;        |
+
+下面的示例展示了 em 元素的用法。
+
+```html
+<p>
+  In HTML 5, what was previously called
+  <em>block-level</em>
+  content is now called
+  <em>flow</em>
+  content.
+</p>
+```
+
+### 8.3.7. sup 和 sub
+
+sup 和 sub 用于上下标。下表概括了这 2 个元素的用法。
+
+| 元素         | sup 和 sub                                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------- |
+| 元素类型     | 短语                                                                                        |
+| 父元素       | 可以包含短语元素的任何元素                                                                  |
+| 局部属性     | 无                                                                                          |
+| 内容         | 短语元素                                                                                    |
+| 标签         | 开始标签+内容+结束标签                                                                      |
+| 关于 html5   | 无                                                                                          |
+| 用户代理样式 | sup {vertical-align: sup; font-size: smaller} sub {vertical-align: sub; font-size: smaller} |
+
+下面的示例展示这 2 个元素的用法。
+
+```html
+The equation represented the circle
+<i>
+  O
+  <sub>1</sub>
+</i>
+is
+<i>
+  x
+  <sup>2</sup>
+  + y
+  <sup>2</sup>
+  = 1
+</i>
+.
+```
+
+### 8.3.8. small
+
+HTML 中的`<small>`元素將使文本的字体变小一号。(例如从大变成中等，从中等变成小，从小变成超小)。在 HTML5 中，除了它的样式含义，这个元素被重新定义为表示边注释和附属细则，包括版权和法律文本。
+
+下表总结了 small 元素。
+
+| 元素         | small                      |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 短语元素                   |
+| 标签         | 开始标签+内容+结束标签     |
+| 关于 html5   | 无                         |
+| 用户代理样式 | font-size: smaller;        |
+
+下面的例子展示 small 元素的用法。
+
+```html
+<p>
+  This is the first sentence.
+  <small>This whole sentence is in small letters.</small>
+</p>
+```
+
+## 8.4. 换行
+
+有两个元素可以用来控制内容换行：br 和 wbr 元素。
+
+### 8.4.1. 强制换行 br
+
+br 元素会引起一次换行。其习惯样式是将后续内容转移到新行上。
+
+下表概括了 br 元素。
+
+| 元素         | br                         |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 无                         |
+| 标签         | 开始标签                   |
+| 关于 html5   | 无                         |
+| 用户代理样式 | 无                         |
+
+下面的示例展示了 br 的用法。
+
+```html
+<p>
+  O’er all the hilltops
+  <br />
+  Is quiet now,
+  <br />
+  In all the treetops
+  <br />
+  Hearest thou
+  <br />
+  Hardly a breath;
+  <br />
+  The birds are asleep in the trees:
+  <br />
+  Wait, soon like these
+  <br />
+  Thou too shalt rest.
+</p>
+```
+
+### 8.4.2. 安全换行 wbr
+
+wbr 元素是 HTML5 中新增的，用来表示长度超过当前浏览器窗口的内容适合在此换行，究竟换不换行由浏览器决定。wbr 元素只不过是对恰当的换行位置的建议而已。
+
+下表概括了 wbr 元素。
+
+| 元素         | br                         |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 无                         |
+| 标签         | 开始标签                   |
+| 关于 html5   | 无                         |
+| 用户代理样式 | 无                         |
+
+下面的示例展示了 br 的用法。
+
+```html
+This is a very long word: Super
+<wbr />
+califragilistic
+<wbr />
+>expialidocious. We can help the browser display long words with the
+<code>wbr</code>
+element.
+```
+
+## 8.5. 代码相关
+
+有四个元素暴露了 HTML 的极客起源。下表概括了这些元素。它们都没有定义局部属性，都不是 HTML5 中新增的，在 HTML5 中也没有任何改变。
+
+| 元素 | 说明                       | 用户代理样式            |
+| ---- | -------------------------- | ----------------------- |
+| code | 表示计算机代码片段         | font-family: monospace; |
+| var  | 在编程语境中表示变量       | font-style: italic;     |
+| samp | 表示程序或计算机系统的输出 | font-family: monospace; |
+| kbd  | 表示用户输入               | font-family: monospace; |
+
+下面的示例展示了上面 4 个元素的用法。
+
+```html
+<code>
+  var fruits= ["apples", "oranges", "mangoes", "cherries"];
+  <br />
+  document.writeln("I like "+ fruits.length+" fruits");
+</code>
+<Ip>
+  <p>
+    The variable in this example is
+    <var>fruits</var>
+    <lp>
+      <p>
+        The output from the code is:
+        <samp>I like 4 fruits</samp>
+        <lp>
+          <p>
+            When prompted for my favorite fruit, I typed:
+            <kbd>cherries</kbd>
+          </p>
+        </lp>
+      </p>
+    </lp>
+  </p>
+</Ip>
+```
+
+## 8.6. 论文相关
+
+下面要讲的四个元素可以用来表示标题引用、引文、定义及缩写。它们在专业的论文中经常使用。
+
+### 8.6.1. 缩写
+
+abbr 元素用来表示缩写。其 title 属性表示的是该缩写代表的完整词语。下表概括了该元素。
+
+| 元素         | abbr                       |
+| ------------ | -------------------------- |
+| 元素类型     | 短语                       |
+| 父元素       | 可以包含短语元素的任何元素 |
+| 局部属性     | 无                         |
+| 内容         | 无                         |
+| 标签         | 开始标签+内容+结束标签     |
+| 关于 html5   | 无                         |
+| 用户代理样式 | 无                         |
+
+下面的例子展示 abbr 的用法。
+
+```html
+<p>
+  You can use
+  <abbr title="Cascading Style Sheets">CSS</abbr>
+  to style your
+  <abbr title="HyperText Markup Language">HTML</abbr>
+  .
+</p>
+```
+
+### 8.6.4. 定义术语
+
+dfn 元素表示定义中的术语，也即在用来解释一个词（或短语）的含义的句子中的词（或短语）。
+
+下表概括了这个元素。
+
+### 8.6.2. 标题引用
+
+### 8.6.3. 引文
+
+## 8.7. 注音
 
 # 9. 表单
 

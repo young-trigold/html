@@ -132,6 +132,11 @@
     - [8.8.2. del 与 ins](#882-del-与-ins)
     - [8.8.3. 日期和时间](#883-日期和时间)
 - [9. 表格](#9-表格)
+  - [9.1. 基本表格元素](#91-基本表格元素)
+  - [9.2. 表头 th](#92-表头-th)
+  - [9.3. tbody 与 thead](#93-tbody-与-thead)
+  - [9.4. tfoot](#94-tfoot)
+  - [9.5. 不规则表格](#95-不规则表格)
 - [10. 表单](#10-表单)
 - [11. 嵌入内容](#11-嵌入内容)
 
@@ -3555,6 +3560,302 @@ time 元素可以用来表示时间或日期。
 ```
 
 # 9. 表格
+
+## 9.1. 基本表格元素
+
+有三个元素是每个表格都必须要有的：table、tr 和 td。制作表格的元素还有其他一些稍后就会介绍，但是必须从本节所讲的三个元素学起。首先要讲的元素 table, 是 HTML 用以支持表格式内容的核心元素，它表示 HTML 文档中的表格。
+
+下表概括了 table 元素。
+
+| 元素         | table                                              |
+| ------------ | -------------------------------------------------- |
+| 元素类型     | 流                                                 |
+| 父元素       | 任何包含流元素的元素                               |
+| 局部属性     | border                                             |
+| 内容         | caption, colgroup, thead, tbody, tfoot, tr, th, td |
+| 标签         | 开始标签+内容+结束标签                             |
+| 关于 html5   | 废弃了很多局部属性                                 |
+| 用户代理样式 | 见下                                               |
+
+table 的用户代理见下。
+
+```css
+table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: gray;
+}
+```
+
+下一个核心表格元素是 tr，它表示表格中的行。HTML 表格基于行而不是列，每个行必须分别标记。下表概括了 tr 元素。
+
+| 元素         | tr                         |
+| ------------ | -------------------------- |
+| 元素类型     | 无                         |
+| 父元素       | table, thead, tfoot, tbody |
+| 局部属性     | 无                         |
+| 内容         | 1 个至多个 td 或 th 元素   |
+| 标签         | 开始标签+内容+结束标签     |
+| 关于 html5   | 废弃了很多局部属性         |
+| 用户代理样式 | 见下                       |
+
+tr 的用户代理样式如下。
+
+```css
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+```
+
+三个核心元素中的最后一个是 td, 它表示表格中的单元格。下表概括了 td 元素。
+
+| 元素         | td                        |
+| ------------ | ------------------------- |
+| 元素类型     | 无                        |
+| 父元素       | tr                        |
+| 局部属性     | colspan, rowspan, headers |
+| 内容         | 流内容                    |
+| 标签         | 开始标签+内容+结束标签    |
+| 关于 html5   | 废弃了很多局部属性        |
+| 用户代理样式 | 见下                      |
+
+td 的局部属性见下。
+
+```css
+td {
+  display: table-cell;
+  vertical-align: inherit;
+}
+```
+
+有了这三个元素，就可以用它们组装出表格。
+
+```html
+<table>
+  <tr>
+    <td>Apples</td>
+    <td>Green</td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Oranges</td>
+    <td>Orange</td>
+    <td>Large</td>
+  </tr>
+</table>
+```
+
+## 9.2. 表头 th
+
+th 元素表示表头的单元格，它可以用来区分数据和对数据的说明。下表概括了 th 元素。
+
+| 元素         | th                               |
+| ------------ | -------------------------------- |
+| 元素类型     | 无                               |
+| 父元素       | tr                               |
+| 局部属性     | colspan, rowspan, headers, scope |
+| 内容         | 流内容                           |
+| 标签         | 开始标签+内容+结束标签           |
+| 关于 html5   | 废弃了很多局部属性               |
+| 用户代理样式 | 见下                             |
+
+th 的用户代理如下。
+
+```css
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: -internal-center;
+}
+```
+
+## 9.3. tbody 与 thead
+
+tbody 元素表示构成表格主体的全体行：不包括表头行和表脚行（它们分别由 thead 和 tfoot 元素表示，稍后就会介绍）。
+
+下表概括了 tbody 元素。
+
+| 元素         | tbody                  |
+| ------------ | ---------------------- |
+| 元素类型     | 无                     |
+| 父元素       | table                  |
+| 局部属性     | 无                     |
+| 内容         | 0 个 至多个 tr 元素    |
+| 标签         | 开始标签+内容+结束标签 |
+| 关于 html5   | 废弃了很多局部属性     |
+| 用户代理样式 | 见下                   |
+
+tbody 的用户代理样式如下。
+
+```css
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+```
+
+顺便提一句，即便在文档中表格没有用到 tbody 元素，大多数浏览器在处理 table 元素的时候都会自动插入 tbody 元素。因此完全根据文档中的表格结构来设计的 CSS 选择器有可能不管用。例如，由于浏览器在 table 和 tr 元素之间插了一个 tbody 元素，所以 table> tr 这个选择器会失效。为了应对这种情况，需要使用 table> tbody > tr 或 table tr（没有字符＞）这样的选择器，或者干脆写成 tbody> tr。
+
+thead 元素用来标记表格的标题行。下表概括了 thead 元素。
+
+| 元素         | thead                  |
+| ------------ | ---------------------- |
+| 元素类型     | 无                     |
+| 父元素       | table                  |
+| 局部属性     | 无                     |
+| 内容         | 0 个 至多个 tr 元素    |
+| 标签         | 开始标签+内容+结束标签 |
+| 关于 html5   | 废弃了很多局部属性     |
+| 用户代理样式 | 见下                   |
+
+thead 的用户代理样式如下。
+
+```css
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+```
+
+下面的例子展示了上述元素的用法。
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Items</th>
+      <th scope="col">Expenditure</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Donuts</th>
+      <td>3,000</td>
+    </tr>
+    <tr>
+      <th scope="row">Stationery</th>
+      <td>18,000</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+```css
+thead,
+tfoot {
+  background-color: #3f87a6;
+  color: #fff;
+}
+
+tbody {
+  background-color: #e4f0f5;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+}
+
+td,
+th {
+  border: 1px solid rgb(190, 190, 190);
+  padding: 5px 10px;
+}
+
+td {
+  text-align: center;
+}
+```
+
+这个改变看似不大，但是表格增加了这些结构之后，区别处理不同类型的单元格就容易多了，也不再那么容易受表格设计改动的影响。
+
+## 9.4. tfoot
+
+tfoot 元素用来标记组成表脚的行。下表概括了 tfoot 元素。
+
+| 元素         | tfoot                  |
+| ------------ | ---------------------- |
+| 元素类型     | 无                     |
+| 父元素       | table                  |
+| 局部属性     | 无                     |
+| 内容         | 0 个 至多个 tr 元素    |
+| 标签         | 开始标签+内容+结束标签 |
+| 关于 html5   | 废弃了很多局部属性     |
+| 用户代理样式 | 见下                   |
+
+tfoot 的用户代理样式如下：
+
+```css
+tfoot {
+  display: table-footer-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+```
+
+下面的例子示范了如何用 tfoot 元素为表格生成表脚。在 HTML5 之前， tfoot 元素只能出现在 tbody 元素（如果省略 tbody 元素，则是第一个 tr 元素）之前。在 HTML5 中则可以把 tfoot 元素放在 tbody 元素之后或最后一个 tr 元素之后，这与浏览器显示表格的方式更为一致。我觉得以编程方式用模板生成 HTML 代码时把 tfoot 放在 tbody 之前通常更方便一点，而手工编写 HTML 代码时把 tfoot 放在 tbody 之后要更自然一点。
+
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Size</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <tr>
+      <th>Favorite:</th>
+      <td>Apples</td>
+      <td>Green</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <th>2nd Favorite:</th>
+      <td>Oranges</td>
+      <td>Orange</td>
+      <td>Large</td>
+    </tr>
+    <tr>
+      <th>3rd Favorite:</th>
+      <td>Pomegranate</td>
+      <td>A kind of greeny-red</td>
+      <td>Varies from medium to large</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## 9.5. 不规则表格
+
+大多数表格都是简单的网格形式，每个单元格占据网格中的一个位置。但是为了表示更复杂的数据，有时需要制作不规则的表格，其中的单元格会跨越几行或几列。这种表格的制作要用到td和th元素的colspan 和rowspan属性。
+
+下面的代码示范了如何用这些属性制作不规则表格。
+
+```html
+
+```
 
 # 10. 表单
 

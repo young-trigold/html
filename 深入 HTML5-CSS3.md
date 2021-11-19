@@ -137,7 +137,10 @@
   - [9.3. tbody 与 thead](#93-tbody-与-thead)
   - [9.4. tfoot](#94-tfoot)
   - [9.5. 不规则表格](#95-不规则表格)
+  - [9.6. colgroup 和 col](#96-colgroup-和-col)
+  - [9.7. 表格标题 caption](#97-表格标题-caption)
 - [10. 表单](#10-表单)
+  - [10.1. 表单基本元素](#101-表单基本元素)
 - [11. 嵌入内容](#11-嵌入内容)
 
 # 1. HTML5 背景
@@ -3571,7 +3574,7 @@ time 元素可以用来表示时间或日期。
 | ------------ | -------------------------------------------------- |
 | 元素类型     | 流                                                 |
 | 父元素       | 任何包含流元素的元素                               |
-| 局部属性     | border                                             |
+| 局部属性     | 无                                                 |
 | 内容         | caption, colgroup, thead, tbody, tfoot, tr, th, td |
 | 标签         | 开始标签+内容+结束标签                             |
 | 关于 html5   | 废弃了很多局部属性                                 |
@@ -3849,14 +3852,161 @@ tfoot {
 
 ## 9.5. 不规则表格
 
-大多数表格都是简单的网格形式，每个单元格占据网格中的一个位置。但是为了表示更复杂的数据，有时需要制作不规则的表格，其中的单元格会跨越几行或几列。这种表格的制作要用到td和th元素的colspan 和rowspan属性。
+大多数表格都是简单的网格形式，每个单元格占据网格中的一个位置。但是为了表示更复杂的数据，有时需要制作不规则的表格，其中的单元格会跨越几行或几列。这种表格的制作要用到 td 和 th 元素的 colspan 和 rowspan 属性。
 
 下面的代码示范了如何用这些属性制作不规则表格。
 
 ```html
-
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Color</th>
+      <th colspan="2">Size&Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Favorite:</th>
+      <td>Apples</td>
+      <td>Green</td>
+      <td>Medium</td>
+      <td>500</td>
+    </tr>
+    <tr>
+      <th>2nd Favorite:</th>
+      <td>Oranges</td>
+      <td>Orange</td>
+      <td>Large</td>
+      <td>450</td>
+    </tr>
+    <tr>
+      <th>3rd Favorite:</th>
+      <td>Pomegranate</td>
+      <td colspan="2" rowspan="2">
+        Pomegranates and cherries can both come in a range of colors and sizes.
+      </td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <th rowspan="2">Joint 4th:</th>
+      <td>Cherries</td>
+      <td rowspan="2">75</td>
+    </tr>
+    <tr>
+      <td>Pineapple</td>
+      <td>Brown</td>
+      <td>Very Large</td>
+    </tr>
+  </tbody>
+</table>
 ```
 
+```css
+table {
+  border: 1px solid black;
+}
+```
+
+## 9.6. colgroup 和 col
+
+HTML 中的表格是基千行的。单元格的定义都要放在 tr 元素中， 而表格则是一行一行地组建出来的。因此对列应用样式有点不方便，对于包含不规则单元格的表格更是如此。这个问题的解决办法是使用 colgroup 和 col 元素。colgroup 代表一组列。
+
+下表概括了 colgroup 元素。
+
+| 元素         | colgroup                                              |
+| ------------ | ----------------------------------------------------- |
+| 元素类型     | 无                                                    |
+| 父元素       | table                                                 |
+| 局部属性     | span                                                  |
+| 内容         | 零个或多个 col 元素（只有未设置 span 属性时才能使用） |
+| 标签         | 开始标签+内容+结束标签                                |
+| 关于 html5   | 废弃了很多局部属性                                    |
+| 用户代理样式 | display: table-column-group;                          |
+
+下面的例子展示了 colgroup 的用法。
+
+```html
+<table>
+    <caption>Superheros and sidekicks</caption>
+    <colgroup>
+        <col>
+        <col span="2" class="batman">
+        <col span="2" class="flash">
+    </colgroup>
+    <tr>
+        <td> </td>
+        <th scope="col">Batman</th>
+        <th scope="col">Robin</th>
+        <th scope="col">The Flash</th>
+        <th scope="col">Kid Flash</th>
+    </tr>
+    <tr>
+        <th scope="row">Skill</th>
+        <td>Smarts</td>
+        <td>Dex, acrobat</td>
+        <td>Super speed</td>
+        <td>Super speed</td>
+    </tr>
+</table>
+```
+
+```css
+.batman {
+    background-color: #d7d9f2;
+}
+
+.flash {
+    background-color: #ffe8d4;
+}
+
+caption {
+    padding: 8px;
+    caption-side: bottom;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(100, 100, 100);
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    font-size: .7rem;
+}
+
+td,
+th {
+    border: 1px solid rgb(100, 100, 100);
+    padding: 10px 10px;
+}
+
+td {
+    text-align: center;
+}
+```
+
+## 9.7. 表格标题 caption
+
+caption 元素可以用来为表格定义一个标题并将其与表格关联起来。
+
+下表概括了 caption 元素。
+
+| 元素         | caption                                     |
+| ------------ | ------------------------------------------- |
+| 元素类型     | 无                                          |
+| 父元素       | table                                       |
+| 局部属性     | 无                                          |
+| 内容         | 流元素，但不能是 table                      |
+| 标签         | 开始标签+内容+结束标签                      |
+| 关于 html5   | 废弃了 align 属性                           |
+| 用户代理样式 | display: table-caption; text-align: center; |
+
+caption 一般放于 thead 元素之前。
+
 # 10. 表单
+
+## 10.1. 表单基本元素
+
+
 
 # 11. 嵌入内容

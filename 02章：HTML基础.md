@@ -141,7 +141,7 @@ HTML 元素是 HTML 文档的构成单位。通过各式各样的元素的重复
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>文档</title>
@@ -230,7 +230,7 @@ accessKey 为元素设置了焦点键盘快捷键。用户可以通过键盘快�
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>Doc</title>
@@ -299,12 +299,12 @@ hidden 属性不能用于隐藏那些可以在其它板块中合理显示的内�
 
 ### 2.5.5. lang
 
-lang 全局属性参与了元素语言的定义。这个语言是不可编辑元素写入的语言，或者可编辑元素应该写入的语言。标签包含单个条目，值的格式由 用于定义语言的标签 (BCP47) IETF 文档定义。如果标签的内容是空字符串，语言就设为未知。如果标签内容是无效的，根据 BCP47，它就设为无效。
+lang 全局属性参与了元素语言的定义。这个语言是不可编辑元素写入的语言，或者可编辑元素应该写入的语言。标签包含单个条目，值的格式由用于定义语言的标签 (BCP47) IETF 文档定义。如果标签的内容是空字符串，语言就设为未知。如果标签内容是无效的，根据 BCP47，它就设为无效。
 
 通常在 html 元素上添加 lang 属性可以为整个网页指定语言，你也可以在单独的块上添加 lang 属性，这样语言效果只局限于这个块。
 
 ```html
-<html lang="zh-Hans"></html>
+<html lang="zh-CN"></html>
 ```
 
 ### 2.5.6. title

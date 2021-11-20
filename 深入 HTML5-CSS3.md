@@ -140,7 +140,12 @@
   - [9.6. colgroup 和 col](#96-colgroup-和-col)
   - [9.7. 表格标题 caption](#97-表格标题-caption)
 - [10. 表单](#10-表单)
-  - [10.1. 表单基本元素](#101-表单基本元素)
+  - [10.1. form](#101-form)
+    - [10.1.1. action](#1011-action)
+    - [10.1.2. accept-charset](#1012-accept-charset)
+  - [10.2. input](#102-input)
+  - [10.3. button](#103-button)
+  - [10.4. label](#104-label)
 - [11. 嵌入内容](#11-嵌入内容)
 
 # 1. HTML5 背景
@@ -343,7 +348,7 @@ HTML 元素是 HTML 文档的构成单位。通过各式各样的元素的重复
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>文档</title>
@@ -432,7 +437,7 @@ accessKey 为元素设置了焦点键盘快捷键。用户可以通过键盘快�
 
 ```html
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <title>Doc</title>
@@ -506,7 +511,7 @@ lang 全局属性参与了元素语言的定义。这个语言是不可编辑元
 通常在 html 元素上添加 lang 属性可以为整个网页指定语言，你也可以在单独的块上添加 lang 属性，这样语言效果只局限于这个块。
 
 ```html
-<html lang="zh-Hans"></html>
+<html lang="zh-CN"></html>
 ```
 
 ### 2.5.6. title
@@ -3929,59 +3934,59 @@ HTML 中的表格是基千行的。单元格的定义都要放在 tr 元素中�
 
 ```html
 <table>
-    <caption>Superheros and sidekicks</caption>
-    <colgroup>
-        <col>
-        <col span="2" class="batman">
-        <col span="2" class="flash">
-    </colgroup>
-    <tr>
-        <td> </td>
-        <th scope="col">Batman</th>
-        <th scope="col">Robin</th>
-        <th scope="col">The Flash</th>
-        <th scope="col">Kid Flash</th>
-    </tr>
-    <tr>
-        <th scope="row">Skill</th>
-        <td>Smarts</td>
-        <td>Dex, acrobat</td>
-        <td>Super speed</td>
-        <td>Super speed</td>
-    </tr>
+  <caption>Superheros and sidekicks</caption>
+  <colgroup>
+    <col />
+    <col span="2" class="batman" />
+    <col span="2" class="flash" />
+  </colgroup>
+  <tr>
+    <td> </td>
+    <th scope="col">Batman</th>
+    <th scope="col">Robin</th>
+    <th scope="col">The Flash</th>
+    <th scope="col">Kid Flash</th>
+  </tr>
+  <tr>
+    <th scope="row">Skill</th>
+    <td>Smarts</td>
+    <td>Dex, acrobat</td>
+    <td>Super speed</td>
+    <td>Super speed</td>
+  </tr>
 </table>
 ```
 
 ```css
 .batman {
-    background-color: #d7d9f2;
+  background-color: #d7d9f2;
 }
 
 .flash {
-    background-color: #ffe8d4;
+  background-color: #ffe8d4;
 }
 
 caption {
-    padding: 8px;
-    caption-side: bottom;
+  padding: 8px;
+  caption-side: bottom;
 }
 
 table {
-    border-collapse: collapse;
-    border: 2px solid rgb(100, 100, 100);
-    letter-spacing: 1px;
-    font-family: sans-serif;
-    font-size: .7rem;
+  border-collapse: collapse;
+  border: 2px solid rgb(100, 100, 100);
+  letter-spacing: 1px;
+  font-family: sans-serif;
+  font-size: 0.7rem;
 }
 
 td,
 th {
-    border: 1px solid rgb(100, 100, 100);
-    padding: 10px 10px;
+  border: 1px solid rgb(100, 100, 100);
+  padding: 10px 10px;
 }
 
 td {
-    text-align: center;
+  text-align: center;
 }
 ```
 
@@ -4005,8 +4010,32 @@ caption 一般放于 thead 元素之前。
 
 # 10. 表单
 
-## 10.1. 表单基本元素
+表单是 HTML 中获取用户输入的手段。它对于 Web 应用系统极其重要，然而 HTML 定义的功能落后于表单的使用方式已有多年。在 HTML5 中，整个表单系统巳经彻底改造过，面貌焕然一新，标准的步伐已经跟上了表单的应用实践。
 
+## 10.1. form
 
+HTML `<form>` 元素表示文档中的一个区域，此区域包含交互控件，用于向 Web 服务器提交信息。
+
+下表总结了 form 元素。
+
+| 元素         | form                                                                            |
+| ------------ | ------------------------------------------------------------------------------- |
+| 元素类型     | 流                                                                              |
+| 父元素       | 可以包含流元素的元素，但不能是 form                                             |
+| 局部属性     | action, accept-charset, method, enctype, name, autocomplete, target, novalidate |
+| 内容         | 流元素，主要是 label 和 input                                                   |
+| 标签         | 开始标签+内容+结束标签                                                          |
+| 关于 html5   | 新增了 novalidate, autocomplete                                                 |
+| 用户代理样式 | display: block; margin-top: 0em;                                                |
+
+### 10.1.1. action
+
+### 10.1.2. accept-charset
+
+## 10.2. input
+
+## 10.3. button
+
+## 10.4. label
 
 # 11. 嵌入内容

@@ -69,7 +69,7 @@
     - [4.4.5. 表格](#445-表格)
     - [4.4.6. 表单](#446-表单)
     - [4.4.7. 嵌入内容](#447-嵌入内容)
-- [5. 创建 HTML 文档](#5-创建-html-文档)
+- [5. 文档和元数据](#5-文档和元数据)
   - [5.1. 文档元素](#51-文档元素)
     - [5.1.1. DOCTYPE](#511-doctype)
     - [5.1.2. html](#512-html)
@@ -105,7 +105,7 @@
   - [7.5. blockquote](#75-blockquote)
   - [7.6. hr](#76-hr)
   - [7.7. figure 和 figcaption](#77-figure-和-figcaption)
-- [8. 文本元素](#8-文本元素)
+- [8. 文本语义](#8-文本语义)
   - [8.1. span](#81-span)
   - [8.2. a](#82-a)
   - [8.3. 基本文本元素](#83-基本文本元素)
@@ -148,20 +148,36 @@
     - [10.1.5. target](#1015-target)
     - [10.1.6. name](#1016-name)
     - [10.1.7. form 属性](#1017-form-属性)
+  - [10.6. label](#106-label)
   - [10.2. input](#102-input)
     - [10.2.1. 公共属性](#1021-公共属性)
-    - [10.2.2. 用作文本输入](#1022-用作文本输入)
-    - [10.2.3. 用作数据输入](#1023-用作数据输入)
-    - [10.2.4. 用作搜索控件](#1024-用作搜索控件)
-    - [10.2.5. 用作隐藏控件](#1025-用作隐藏控件)
-    - [10.2.6. 用作文件上传](#1026-用作文件上传)
+    - [10.2.2. 输入文本](#1022-输入文本)
+    - [10.2.3. 输入密码](#1023-输入密码)
+    - [10.2.4. 作为按钮](#1024-作为按钮)
+    - [10.2.5. 输入数据](#1025-输入数据)
+    - [10.2.6. 固定选项](#1026-固定选项)
+    - [10.2.7. 输入 email 和 url 等](#1027-输入-email-和-url-等)
+    - [10.2.8. 输入时间和日期](#1028-输入时间和日期)
+    - [10.2.9. 输入颜色](#1029-输入颜色)
+    - [10.2.10. 用于搜索](#10210-用于搜索)
+    - [10.2.11. 隐藏输入控件](#10211-隐藏输入控件)
+    - [10.2.12. 上传文件](#10212-上传文件)
+    - [10.2.13. 图片按钮](#10213-图片按钮)
   - [10.3. button](#103-button)
     - [10.3.1. submit](#1031-submit)
     - [10.3.2. reset](#1032-reset)
     - [10.3.3. 一般用法](#1033-一般用法)
-  - [10.4. label](#104-label)
-  - [10.5. fieldset](#105-fieldset)
+  - [10.4. select](#104-select)
+  - [10.5. textarea](#105-textarea)
+  - [10.7. fieldset](#107-fieldset)
 - [11. 嵌入元素](#11-嵌入元素)
+  - [11.1. img](#111-img)
+  - [11.2. embed](#112-embed)
+  - [11.3. progress](#113-progress)
+  - [11.4. meter](#114-meter)
+  - [11.5. audio](#115-audio)
+  - [11.6. video](#116-video)
+  - [11.7. canvas](#117-canvas)
 
 # 1. HTML5 背景
 
@@ -1489,30 +1505,30 @@ b 元素表示一段文字（将这段文宇从周围文字中凸现出未并不
 | option   | 表示供用户选择的一个选项                                              | 无   | 无变化         |
 | optgroup | 表示一组相关的选项                                                    | 无   | 无变化         |
 | button   | 表示提交或者一般的按钮                                                | 短语 | 有变化         |
-| grogress | 表示一个进度条                                                        | 流   | 新增           |
-| meter    | 用来显示已知范围的标量值或者分数值。                                  | 短语 | 新增           |
 
 ### 4.4.7. 嵌入内容
 
 嵌入元素用于在 HTML 文档中嵌入内容，例如图片，音频，视频或者画布。
 
-| 元素   | 说明                                                                                                           | 类型     | 新增或有无变化 |
-| ------ | -------------------------------------------------------------------------------------------------------------- | -------- | -------------- |
-| img    | 嵌入图片                                                                                                       | 短语     | 有变化         |
-| svg    | 嵌入可伸缩矢量图                                                                                               | 无       | 新增           |
-| audio  | 嵌入音频                                                                                                       | 无       | 新增           |
-| video  | 嵌入视频                                                                                                       | 无       | 新增           |
-| track  | 被当作媒体元素—audio 和 video 的子元素来使用。它允许指定时序文本字幕（或者基于时间的数据），例如自动处理字幕。 | 无       | 新增           |
-| map    | 与 area 属性一起使用来定义一个图像映射(一个可点击的链接区域).                                                  | 短语，流 | 有变化         |
-| area   | 在 amp 内部使用，表示一个可点击的热区                                                                          | 短语     | 有变化         |
-| embed  | 将外部内容嵌入文档中的指定位置。此内容由外部应用程序或其他交互式内容源（如浏览器插件）提供                     | 短语     | 新增           |
-| iframe | 通过创建一个浏览上下文，在一个文档内部嵌入文档                                                                 | 短语     | 有变化         |
-| object | 表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源。               | 短语，流 | 有变化         |
-| param  | 为 object 元素定义参数                                                                                         | 无       | 无变化         |
-| source | 为 audio 或者 video 元素指定多个媒体资源。这是一个空元素。                                                     | 无       | 新增           |
-| canvas | 可被用来通过 JavaScript 绘制图形及图形动画。                                                                   | 短语，流 | 新增           |
+| 元素     | 说明                                                                                                           | 类型     | 新增或有无变化 |
+| -------- | -------------------------------------------------------------------------------------------------------------- | -------- | -------------- |
+| img      | 嵌入图片                                                                                                       | 短语     | 有变化         |
+| svg      | 嵌入可伸缩矢量图                                                                                               | 无       | 新增           |
+| grogress | 表示一个进度条                                                                                                 | 流       | 新增           |
+| meter    | 用来显示已知范围的标量值或者分数值。                                                                           | 短语     | 新增           |
+| audio    | 嵌入音频                                                                                                       | 无       | 新增           |
+| video    | 嵌入视频                                                                                                       | 无       | 新增           |
+| track    | 被当作媒体元素—audio 和 video 的子元素来使用。它允许指定时序文本字幕（或者基于时间的数据），例如自动处理字幕。 | 无       | 新增           |
+| map      | 与 area 属性一起使用来定义一个图像映射(一个可点击的链接区域).                                                  | 短语，流 | 有变化         |
+| area     | 在 amp 内部使用，表示一个可点击的热区                                                                          | 短语     | 有变化         |
+| embed    | 将外部内容嵌入文档中的指定位置。此内容由外部应用程序或其他交互式内容源（如浏览器插件）提供                     | 短语     | 新增           |
+| iframe   | 通过创建一个浏览上下文，在一个文档内部嵌入文档                                                                 | 短语     | 有变化         |
+| object   | 表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源。               | 短语，流 | 有变化         |
+| param    | 为 object 元素定义参数                                                                                         | 无       | 无变化         |
+| source   | 为 audio 或者 video 元素指定多个媒体资源。这是一个空元素。                                                     | 无       | 新增           |
+| canvas   | 可被用来通过 JavaScript 绘制图形及图形动画。                                                                   | 短语，流 | 新增           |
 
-# 5. 创建 HTML 文档
+# 5. 文档和元数据
 
 本章介绍的是最基础的 HTML5 元素：**文档元素** 和 **元数据元素**。它们是创建 HTML 文档和说明其内容的元素。
 
@@ -2848,7 +2864,7 @@ figcaption 的概括如下表。
 </figure>
 ```
 
-# 8. 文本元素
+# 8. 文本语义
 
 现在将目光从大尺度的、结构性的文档元素转向细粒度层次：文本层面的元素（简称文本元素）。把这些元素加入文本当中，也就引入了结构和含义。在揣摩本章例子的过程中可以明显体会到这一点。
 
@@ -4133,6 +4149,39 @@ name 属性可以用来为表单设置一个独一无二的标识符，以便使
 
 在 HTML4 中，input 、button 和其他与表单相关的元素必须放在 form 元素中。本章前面所有例子都是这样做的。在 HTML5 中，这条限制不复存在。现在可以将这类元素与文档中任何地方的表单挂钩。input 、button 元素以及其他与表单相关的元素都定义了一个 form 属性，该属性正是用于这个目的。要将某个这类元素与并非其祖先元素的 form 元素挂钩，只需要将其 form 属性设置为相关 form 元素的 id 属性值即可。
 
+## 10.6. label
+
+label 元素用于表示用户界面中某个元素的说明。
+
+下表概括了 label 元素。
+
+| 元素         | label                  |
+| ------------ | ---------------------- |
+| 元素类型     | 短语                   |
+| 父元素       | 可以包含短语元素的元素 |
+| 局部属性     | for, form              |
+| 内容         | 短语元素               |
+| 标签         | 开始标签+内容+结束标签 |
+| 关于 html5   | 新增了一些属性         |
+| 用户代理样式 | cursor: default;       |
+
+下面的例子展示了 label 的用法。
+
+```html
+<label>用户名：</label>
+<input type="text" name="username" />
+<label>密码：</label>
+<input type="password" name="password" />
+```
+
+1. **for**
+
+即和 `<label>` 元素在同一文档中的 可关联标签的元素 的 id。 文档中第一个 id 值与 `<label>` 元素 for 属性值相同的元素，如果可关联标签（labelable），则为已关联标签的控件，其标签就是这个 `<label>` 元素。如果这个元素不可关联标签，则 for 属性没有效果。如果文档中还有其他元素的 id 值也和 for 属性相同，for 属性对这些元素也没有影响。
+
+2. **form**
+
+表示与 label 元素关联的 `<form>` 元素（即它的表单拥有者）。如果声明了该属性，其值应是同一文档中 `<form>` 元素的 id。因此你可以将 label 元素放在文档的任何位置，而不仅作为 `<form>` 元素的后代。
+
 ## 10.2. input
 
 第二种关键元素是 input, 其用途是收集用户输入数据。input 元素在浏览器中显示为一个简单的文本框。用户就在这个文本框中输入内容。这是最基本的一种 input 元素。后面会介绍收集用户输入数据的多种选择，包括 HTML5 中新增的一些很棒的特性。
@@ -4222,7 +4271,7 @@ input 表单控件的类型
 
 用于表单的自动填充功能
 
-### 10.2.2. 用作文本输入
+### 10.2.2. 输入文本
 
 type 属性设置为 text 的 input 元素在浏览器中显示为一个单行文本框。上一章用到的 input 元素就是这个样子，这是未设置 type 属性情况下的默认形式。
 
@@ -4287,26 +4336,351 @@ option {
   <option>orange</option>
   <option>blueberry</option>
 </datalist>
-<input type="text" list="fruits"/>
+<input type="text" list="fruits" />
 ```
 
-1. **size**
+2. **size 和 maxlength**
 
-2. **maxlength**
+有两个属性能够对文本框的大小产生影响。maxlength 属性设定了用户能够输入的字符的最大数目，size 属性则设定了文本框能够显示的字符数目。二者的字符数目均以正整数表示。
 
-3. **pattern**
+下面的代码示范了这两个属性的用法。
 
-4. **dirname**
+```html
+<input type="text" name="usename" size="10" maxlength="10" />
+```
 
-5. **placeholder**
+除了 maxlength 之外，当然还有 minlength 属性，这个属性指定了最少的能输入字符长度。
 
-### 10.2.3. 用作数据输入
+3. **placeholder**
 
-### 10.2.4. 用作搜索控件
+先前的例子中的文本框在文档刚载入时都是空的，不过它们不是非这样不可。设计者可以用 value 属性设置一个默认值， 还可以用 placeholder 属性设置一段提示文字，告诉用户应该输入什么类型的数据。
 
-### 10.2.5. 用作隐藏控件
+下面的例子展示了这一点。
 
-### 10.2.6. 用作文件上传
+```html
+<input type="text" name="username" placeholder="你的手机号" />
+```
+
+4. **pattern**
+
+在获取用户输入数据的时候，得到的有可能是一些不堪敷用的东西。其原因可能是用户输入出错，也可能是设计者没有把自己想要的数据类型说清楚。
+
+HTML5 引入了对输入验证(input validation) 的支持。设计者可以告诉浏览器自己需要什么类型的数据，然后浏览器在提交表单之前会使用这些信息检查用户输入的数据是否有效。要是数据有问题，浏览器会提示用户进行更正，而且只有把这些问题解决之后才能提交表单。
+
+在浏览器中验证输入数据不是什么新鲜事儿，但是在 HTML5 之前要这样做只能使用 JavaScript 库，比如 jQuery 出色的输入验证插件。
+
+在浏览器中验证输入数据的好处在于用户可以立刻得到问题反馈。要不然用户就得先提交表单，等到服务器回应之后才能处理其发现的问题。如果网速较慢而且服务器比较繁忙，这个过程会慢得让人心烦。
+
+输入验证是通过表单元素的一些属性控制的。
+
+下表罗列了表单元素（及 input 元素的各种类型）对各种验证属性的支待情况。
+
+| 验证属性 | 元素                                                                                 |
+| -------- | ------------------------------------------------------------------------------------ |
+| min、max | input (datetime 、datetime-local 、date 、month 、time 、week 、number 及 range 型） |
+| pattern  | input (text 、password 、email 、url 、search 及 tel 型）                            |
+
+本节来讲讲，pattern 的用法，min 和 max 属性会放到后面来讲。pattern 属性可以用来确保输入值与一个正则表达式匹配。
+
+下面展示了匹配一个手机号（中国手机号）的 input 元素。
+
+```html
+<label for="username">用户名：</label>
+<input
+  type="text"
+  name="username"
+  maxlength="11"
+  size="11"
+  placeholder="你的手机号"
+  pattern="^1[3-9]\d{9}$"
+  required
+  autofocus
+/>
+```
+
+### 10.2.3. 输入密码
+
+type 属性值设置为 password 的 input 元素用于输入密码。用户输入的字符在这种文本框中显示为星号（\*）之类的掩饰字符。
+
+input 元素在 type 属性被设置为 password 时可以使用一些额外属性: maxlength，minlength, pattern，palceholder，size。这些属性 text 型 input 元素也有，而且用法相同。
+
+下面的代码展示了一个包含数字,英文,字符中的两种以上，长度为 6-20 的密码输入框。
+
+```html
+<label for="password">密码：</label>
+<input
+  type="password"
+  name="password"
+  maxlength="20"
+  minlength="6"
+  size="20"
+  placeholder="你的密码"
+  pattern="^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)])+$).{6,20}$"
+  required
+/>
+```
+
+### 10.2.4. 作为按钮
+
+将 input 元素的 type 属性设置为 submit 、reset 和 button 会生成类似 button 元素那样的按钮。
+
+submit 型 input 元素可用的额外属性与 button 元素的同名属性用法相同。reset 和 button 型 input 元素没有定义任何额外的属性。
+
+### 10.2.5. 输入数据
+
+1. **number**
+
+type 属性设置为 number 的 input 元素生成的输入框只接受数值。有些浏览器（如 Chrome) 还会在旁边显示用来上调和下调数值的箭头形小按钮。下表介绍了这种类型的 input 元素可用的额外属性。
+
+| 属性 | 说明                                                                   | 是否为 HTML5 新增 |
+| ---- | ---------------------------------------------------------------------- | ----------------- |
+| list | 指定为文本框提供建议值的 datalist 元素                                 | 是                |
+| min  | 设定可接受的最小值（也是下调按钮［如果有的话）的下限）以便进行输入验证 | 是                |
+| max  | 设定可接受的最大值（也是上调按钮［如果有的话）的上限）以便进行输人验证 | 是                |
+| step | 指定上下调节数值的步长                                                 | 是                |
+
+min、max、step 和 value 属性值可以是整数或小数，如 3 和 3.14 都是有效值。
+
+下面的代码示范了 number 型 input 元素的用法。
+
+```html
+<input type="number" name="age" min="0" max="130" step="1" />
+```
+
+2. **range**
+
+获取数值的另一种办法是使用 range 型 input 元素。用户只能用它从事先规定的范围内选择一个数值。range 型 input 元素支持的属性与 number 型相同，但二者在浏览器中的显示结果不同。
+
+下面的代码清单示范了 range 型 input 元素的用法。
+
+```html
+<input type="range" name="price" step="1" min="0" max="100" value="1" />
+```
+
+3. **checkbox**
+
+checkbox 型 input 元素会生成供用户选择是或否的复选框。
+
+这种类型的 input 元素支持的额外属性 checked 设置了该属性的复选框刚显示出来时或重置表单后呈勾选状态。
+
+下面的例子展示了这种类型 input 的用法。
+
+```html
+<input type="checkbox" name="havejob" checked />
+```
+
+### 10.2.6. 固定选项
+
+radio 型 input 元素可以用来生成一组单选按钮， 供用户从一批固定的选项中作出选择。它适合于可用有效数据不多的情况。这种 input 元素的额外属性 checked 指定了 input 元素的选中状态。
+
+下面的例子展示了这种用法。
+
+```html
+<fieldset>
+  <legend>Vote for your favorite fruit</legend>
+  <label for="apples">
+    <input type="radio" checked value="Apples" id="apples" name="fave" />
+    Apples
+  </label>
+  <label for="oranges">
+    <input type="radio" value="Oranges" id="oranges" narne="fave" />
+    Oranges
+  </label>
+  <label for="cherries">
+    <input type="radio" value="Cherries" id="cherries" name="fave" />
+    Cherries
+  </label>
+</fieldset>
+```
+
+### 10.2.7. 输入 email 和 url 等
+
+type 属性设置为 email 、tel 和 url 的 input 元素能接受的输入数据分别为有效的电子邮箱地址、电话号码和 URL。
+
+这三种 input 元素均支持 text 文本框的额外属性，都显示为普通文本框的样子，它们只有在提交表单的时候才会检查用户输入的数据。这是 HTML5 中新增的输入数据检查功能之一，至于检查的效果则各有不同。所有主流浏览器都支持 email 型 input 元素，并能正确识别有效的电子邮箱地址。而 url 型 input 元素则时灵时不灵。浏览器对 tel 型 input 元素的支待是最差的。
+
+下面的代码展示了这些用法。
+
+```html
+<label for="email">Enter your gmail.com email:</label>
+
+<input type="email" id="email" pattern=".+@gmail\.com" size="30" required />
+
+<label for="url">Enter an https:// URL:</label>
+
+<input
+  type="url"
+  name="url"
+  id="url"
+  placeholder="https://example.com"
+  pattern="https://.*"
+  size="30"
+  required
+/>
+
+<input
+  type="tel"
+  name="username"
+  maxlength="11"
+  size="11"
+  placeholder="你的手机号"
+  pattern="^1[3-9]\d{9}$"
+  required
+  autofocus
+/>
+```
+
+### 10.2.8. 输入时间和日期
+
+HTML5 中增加了一些 input 元素的新类型，供用户输入日期和时间。下表介绍了这些类型的 input 元素。
+
+| type 属性值    | 说明                                                                                             | 示例             |
+| -------------- | ------------------------------------------------------------------------------------------------ | ---------------- |
+| date           | 输入日期的控件（年、月、日，不包括时间）。在支持的浏览器激活时打开日期选择器或年月日的数字滚轮。 | 2021/11/22       |
+| datetime-local | 输入日期和时间的控件，不包括时区。在支持的浏览器激活时打开日期选择器或年月日的数字滚轮。         | 2021/11/22 20:04 |
+| month          | 输入年和月的控件，没有时区。                                                                     | 2021 年 11 月    |
+| time           | 用于输入时间的控件，不包括时区。                                                                 | 20:11            |
+| week           | 用于输入以年和周数组成的日期，不带时区。                                                         | 2021 年第 47 周  |
+
+datetime 类型已经被废弃。
+
+这些类型的元素都有以下额外的属性：min, max, step, list。
+
+下面的示例展示了这些用法。
+
+```html
+<label for="bday">Enter your birthday:</label>
+<input type="date" id="bday" name="bday" />
+
+<label for="party">输入预订宴会的日期和时间：</label>
+<input
+  id="party"
+  type="datetime-local"
+  name="partydate"
+  min="2017-06-01T08:30"
+  max="2017-06-30T16:30"
+/>
+<label for="start">Start month:</label>
+
+<input type="month" id="start" name="start" min="2018-03" value="2018-05" />
+<label for="week">Choose a week in May or June:</label>
+
+<input
+  type="week"
+  name="week"
+  id="camp-week"
+  min="2018-W18"
+  max="2018-W26"
+  required
+/>
+<label for="appt">Choose a time for your meeting:</label>
+
+<input type="time" id="appt" name="appt" min="09:00" max="18:00" required />
+
+<small>Office hours are 9am to 6pm</small>
+```
+
+### 10.2.9. 输入颜色
+
+color 型 input 元素只能用来选择颜色。这种类型的 input 元素还支持讲过的 list 属性。
+
+这种 input 元素中的颜色值以 7 个字符的格式表示：以 # 开头，接下来是三个两位十六进制数，它们分别代表红、绿、蓝三种原色的值（如＃FF1234)。CSS 中的颜色名（如 red 和 black) 不能用在这里。
+
+此元素的外观会因浏览器不同而不同，可能是简单的验证颜色输入格式的文本框，也可能使用平台原生或自定义样式的颜色选择器。其 UI 除要能接收文本格式的颜色外，未要求其他特性。
+
+下面的代码示范了这种 input 元素的用法。
+
+```html
+<input type="color" value="#ff0000" />
+```
+
+### 10.2.10. 用于搜索
+
+search 型 input 元素会生成一个单行文本框， 供用户输入搜索用词。这种 input 元素有点与众不同，它实际上什么事都不做。它既不会对用户输入的数据作出限制，也没有诸如搜索本页或借助用户的默认搜索引擎进行搜索这样的功能。这类 input 元素支持的额外属性与 text 型 input 元素相同。
+
+下面的代码示范了其用法。
+
+```html
+<label for="site-search">Search the site:</label>
+<input type="search" id="site-search" name="q" />
+<button>Search</button>
+```
+
+### 10.2.11. 隐藏输入控件
+
+"hidden" 类型的 `<input>` 元素允许 Web 开发者存放一些用户不可见、不可改的数据，在用户提交表单时，这些数据会一并发送出。比如，正被请求或编辑的内容的 ID，或是一个唯一的安全令牌。这些隐藏的 `<input>` 元素在渲染完成的页面中完全不可见，而且没有方法可以使它重新变为可见。
+
+下面的代码展示了这种用法。
+
+```html
+<input id="prodId" name="prodId" type="hidden" value="xm234jq" />
+```
+
+### 10.2.12. 上传文件
+
+使用 type="file" 的 `<input>` 元素使得用户可以选择一个或多个元素以提交表单的方式上传到服务器上，或者通过 Javascript 的 File API 对文件进行操作。
+
+该类型的 input 元素支持以下额外属性。
+
+| 属性     | 说明                                     | 是否 HTML 新增 |
+| -------- | ---------------------------------------- | -------------- |
+| accept   | 指定输入文件 MIME 的类型                 | 否             |
+| capture  | 当输入文件为图片或视频时，采用哪个摄像头 | 是             |
+| multiple | 表示上传多个文件                         | 是             |
+| files    | 表示输入文件的数组                       | 是             |
+
+1. **accept**
+
+accept 属性是一个字符串，它定义了文件 input 应该接受的文件类型。这个字符串是一个以逗号为分隔的唯一文件类型说明符列表。由于给定的文件类型可以用多种方式指定，因此当你需要给定格式的文件时，提供一组完整的类型指定符是非常有用的。
+
+唯一文件类型说明符是一个字符串，表示在 file 类型的 `<input>` 元素中用户可以选择的文件类型。每个唯一文件类型说明符可以采用下列形式之一：
+
+- 一个以英文句号（"."）开头的合法的不区分大小写的文件名扩展名。例如： .jpg，.pdf 或 .doc。
+- 一个不带扩展名的 MIME 类型字符串。
+- 字符串 audio/\*， 表示“任何音频文件”。
+- 字符串 video/\*，表示 “任何视频文件”。
+- 字符串 image/\*，表示 “任何图片文件”。
+
+accept 属性的值是一个包含一个或多个（用逗号分隔）这种唯一文件类型说明符的字符串。 例如，一个文件选择器需要能被表示成一张图片的内容，包括标准的图片格式和 PDF 文件，大概是这样的：
+
+```html
+<input type="file" accept="image/*,.pdf" />
+```
+
+2. **capture**
+
+capture (en-US) 属性是一个字符串，如果 accept (en-US) 属性指出了 input 是图片或者视频类型，则它指定了使用哪个摄像头去这些数据。值 user 表示应该使用前置摄像头和/或麦克风。值 environment 表示应该使用后置摄像头和/或麦克风。如果缺少此属性，则 user agent 可以自由决定做什么。如果请求的前置模式不可用，则用户代理可能退回到其首选的默认模式。
+
+3. **multiple**
+
+ultiple 属性指定可以一次选择多个文件。 用户可以用他们选择的平台允许的任何方式从文件选择器中选择多个文件（如，按住 Shift or Control，然后单击）。如果您只想让用户为每个`<input>` 选择一个文件，那么省略 multiple 属性。
+
+4. **files**
+
+被选择的文件以 HTMLInputElement.files 属性返回，它是一个包含一列 File 对象的 FileList 对象。FileList 的行为像一个数组，所以你可以检查 length 属性来获得已选择文件的数量。
+
+每个 File 包含下列信息：
+
+- name
+  文件名。
+- lastModified
+  一个数字，指定文件最后一次修改的日期和时间，以 UNIX 新纪元（1970 年 1 月 1 日午夜）以来的毫秒数表示。
+- lastModifiedDate
+  一个 Date 对象，表示文件最后一次修改的日期和时间。这被弃用，并且不应使用。使用 lastModified 作为替代。
+- size
+  以字节数为单位的文件大小。
+- type
+  文件的 MIME 类型。
+
+### 10.2.13. 图片按钮
+
+`<input type="image">` 标签是一个图片提交按钮。你必须使用 src 属性来定义图片的源，并且使用 alt 来定义当图片无法显示的时候的替代文字。 height 和 width 属性是用来定义图片的高和宽的。
+
+如下例所示：
+
+```html
+<input type="image" name="image" src="/files/2917/fxlogo.png" width="50" />
+```
 
 ## 10.3. button
 
@@ -4375,44 +4749,176 @@ button {
 | formtarget     | 覆盖 form 元素的 target 属性。                                       |
 | formnovalidate | 覆盖 form 元素的 novalidate 属性，表明是否应执行客户端数据有效性检查 |
 
+下面的例子展示了 submit button 的用法。
+
+```html
+<button type="submit" formaction="http://localhost:8080/form" formmethod="post">
+  Submit Vote
+</button>
+```
+
 ### 10.3.2. reset
+
+如果将 button 元素的 type 属性设置为 reset, 那么按下按钮会将表单中所有 input 元素重置为初始状态。这样使用该元素时，没有额外的属性可用。
+
+```html
+<button type="reset">Reset</button>
+```
 
 ### 10.3.3. 一般用法
 
-## 10.4. label
+如果将 button 元素的 type 属性设置为 button, 那么该 button 元素就仅仅是一个按钮。它没有特别的含义，在按下时也不会做任何事情。这样的按钮一般使用事件监听器，绑定一个事件处理器。
 
-label 元素用于表示用户界面中某个元素的说明。
+## 10.4. select
 
-下表概括了 label 元素。
+select 元素可以用来生成一个选项列表供用户选择。它比介绍过的 radiobutton 型 input 元素更紧凑，更适合于选项较多的情形。
 
-| 元素         | label                  |
-| ------------ | ---------------------- |
-| 元素类型     | 短语                   |
-| 父元素       | 可以包含短语元素的元素 |
-| 局部属性     | for, form              |
-| 内容         | 短语元素               |
-| 标签         | 开始标签+内容+结束标签 |
-| 关于 html5   | 新增了一些属性         |
-| 用户代理样式 | cursor: default;       |
+该元素的 name、disabled、form、auto focus 和 required 属性与 input 元素的同名属性类似。size 属性用来设定要显示给用户的选项数目。元素如果设置了 multiple 属性的话，那么用户就能一次选择多个选项。
 
-下面的例子展示了 label 的用法。
+下表概括了 select 元素。
 
-```html
-<label>用户名：</label>
-<input type="text" name="username" />
-<label>密码：</label>
-<input type="password" name="password" />
+| 元素         | select                                                      |
+| ------------ | ----------------------------------------------------------- |
+| 元素类型     | 短语                                                        |
+| 父元素       | 可以包含短语元素的元素                                      |
+| 局部属性     | name、disabled、form、size、multiple、autofocus 和 required |
+| 内容         | option                                                      |
+| 标签         | 开始标签+内容+结束标签                                      |
+| 关于 html5   | 新增了一些属性                                              |
+| 用户代理样式 | 见下                                                        |
+
+select 的用户代理样式见下。
+
+```css
+select {
+  -webkit-writing-mode: horizontal-tb !important;
+  font-style: ;
+  font-variant-ligatures: ;
+  font-variant-caps: ;
+  font-variant-numeric: ;
+  font-variant-east-asian: ;
+  font-weight: ;
+  font-stretch: ;
+  font-size: ;
+  font-family: ;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  box-sizing: border-box;
+  align-items: center;
+  white-space: pre;
+  -webkit-rtl-ordering: logical;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  cursor: default;
+  margin: 0em;
+  border-width: 1px;
+  border-style: solid;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  border-radius: 0px;
+}
 ```
 
-1. **for**
+提供给用户的选项由 option 元素定义。它就是与 datalist 元素搭配使用的那种 option 元素。
 
-即和 `<label>` 元素在同一文档中的 可关联标签的元素 的 id。 文档中第一个 id 值与 `<label>` 元素 for 属性值相同的元素，如果可关联标签（labelable），则为已关联标签的控件，其标签就是这个 `<label>` 元素。如果这个元素不可关联标签，则 for 属性没有效果。如果文档中还有其他元素的 id 值也和 for 属性相同，for 属性对这些元素也没有影响。
+下面的代码示范了 select 和 option 元素的用法。
 
-2. **form**
+```html
+<select id="fave" name="fave">
+  <option value="apples" selected label="Apples">Apples</option>
+  <option value="oranges" label="Oranges">Oranges</option>
+  <option value="cherries" label="Cherries">Cherries</option>
+  <option value="pears" label="Pears">Pears</option>
+</select>
+```
 
-表示与 label 元素关联的 `<form>` 元素（即它的表单拥有者）。如果声明了该属性，其值应是同一文档中 `<form>` 元素的 id。因此你可以将 label 元素放在文档的任何位置，而不仅作为 `<form>` 元素的后代。
+## 10.5. textarea
 
-## 10.5. fieldset
+textarea 元素生成的是多行文本框，用户可以在里面输入多行文字。下表概括了 textarea 元素。
+
+| 元素         | textarea                                                                                                    |
+| ------------ | ----------------------------------------------------------------------------------------------------------- |
+| 元素类型     | 短语                                                                                                        |
+| 父元素       | 可以包含短语元素的元素                                                                                      |
+| 局部属性     | name 、disabled 、form、readonly、maxlength、autofocus、required、placeholder、dirname、rows 、wrap 和 cols |
+| 内容         | 文本                                                                                                        |
+| 标签         | 开始标签+内容+结束标签                                                                                      |
+| 关于 html5   | 新增了一些属性                                                                                              |
+| 用户代理样式 | 见下                                                                                                        |
+
+textarea 的用户代理样式如下。
+
+```css
+textarea {
+  -webkit-writing-mode: horizontal-tb !important;
+  font-style: ;
+  font-variant-ligatures: ;
+  font-variant-caps: ;
+  font-variant-numeric: ;
+  font-variant-east-asian: ;
+  font-weight: ;
+  font-stretch: ;
+  font-size: ;
+  font-family: monospace;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  line-height: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  -webkit-rtl-ordering: logical;
+  resize: auto;
+  cursor: text;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  column-count: initial !important;
+  margin: 0em;
+  border-width: 1px;
+  border-style: solid;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+  padding: 2px;
+}
+```
+
+textarea 元素的 rows 和 cols 属性可用来设置其大小。wrap 属性有两个值：hard 和 soft, 可用来控制在用户输入的文字中插入换行符的方式。其他属性与 input 元素的同名属性用法相同。
+
+1. **cols 和 rows**
+
+cols 表示文本域的可见宽度，单位为字符的平均宽度。默认为 20。取值只能为正整数。rows 表示文本域的文本行数。
+
+2. **wrap**
+
+指定文本换行的方式。默认为 soft。可能的值为：
+
+- hard: 在文本到达元素最大宽度的时候，浏览器自动插入换行符(CR+LF) 。比如指定 cols 值。
+- soft: 在到达元素最大宽度的时候，不会自动插入换行符。
+
+2. **spellcheck**
+
+该属性设为 true 时，表明该元素会做拼写和语法检查。属性值为 default 时，表明元素有默认行为，可能会基于父元素的 spellcheck 值。属性值为 false 时，表明元素不做拼写和语法检查。
+
+下面的示例展示了 textarea 的用法。
+
+```html
+<textarea name="textarea" rows="5" cols="30" minlength="10" maxlength="20">Write something here</textarea>
+```
+
+## 10.7. fieldset
 
 对于更复杂的表单，有时需要将一些元素组织在一起。为此可以使用 fieldset 元素。下表概括了这个元素。
 
@@ -4491,11 +4997,15 @@ fieldset {
 
 上面的例子中已将 input 元素分别编组， 但是未向用户提供相关说明。在每一个 fieldset 元素中添加一个 legend 元素即可弥补这个缺点，下表概括了这个元素。
 
-```html
-| 元素 | legend | | ------------ | ---------------------- | | 元素类型 | 无 | |
-父元素 | fieldset | | 局部属性 | 无 | | 内容 | 短语元素 | | 标签 |
-开始标签+内容+结束标签 | | 关于 html5 |无 | | 用户代理样式 | 见下 |
-```
+| 元素         | legend                 |
+| ------------ | ---------------------- |
+| 元素类型     | 无                     |
+| 父元素       | fieldset               |
+| 局部属性     | 无                     |
+| 内容         | 短语元素               |
+| 标签         | 开始标签+内容+结束标签 |
+| 关于 html5   | 无                     |
+| 用户代理样式 | 见下                   |
 
 legend 的用户代理样式为：
 
@@ -4516,3 +5026,17 @@ legend {
 本章前面已经示范过如何禁用单个 input 元素。通过设置 fieldset 元素的 disabled 属性，可以一次性地禁用多个 input 元素。此时 fieldset 元素中包含的所有 input 元素都会被禁用。
 
 # 11. 嵌入元素
+
+## 11.1. img
+
+## 11.2. embed
+
+## 11.3. progress
+
+## 11.4. meter
+
+## 11.5. audio
+
+## 11.6. video
+
+## 11.7. canvas

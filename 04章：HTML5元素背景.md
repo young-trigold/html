@@ -75,7 +75,7 @@ b 元素表示一段文字（将这段文宇从周围文字中凸现出未并不
 | 内容              | 0、或多个 li 元素                                                                                                                                                  |
 | 标签用法          | 开始和结束标签                                                                                                                                                     |
 | 是否为 HTML5 新增 | 否                                                                                                                                                                 |
-| 在 HTML5 中的变化 | reversed 屈性是 HTML5 中新增的。在 HTM 区中已不赞成使用的 start 和 type 屈性在 HTML5 中又得以恢复， 不过其含义变成了语义（而不是呈现）方面的。compact 属性不再使用 |
+| 在 HTML5 中的变化 | reversed 属性是 HTML5 中新增的。在 HTM 区中已不赞成使用的 start 和 type 属性在 HTML5 中又得以恢复， 不过其含义变成了语义（而不是呈现）方面的。compact 属性不再使用 |
 | 习惯样式          | ol { display: block; list-style-type: decimal;margin-before: 1em; margin-after: 1em; margin-start: 0; margin-end: 0;padding-start: 40px; }                         |
 
 摘要表中的信息包括：哪些元素可成为该元素的父元素，该元素可以包含什么类型的内容，标签应该怎样使用，默认呈现样式，该元素是否为 HTML5 新增或在 HTML5 中发生了什么变化。关于允许具有什么父元素和内容的信息，其依据是介绍过的元素类型（主要是流元素和短语元素）。

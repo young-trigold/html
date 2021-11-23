@@ -148,36 +148,44 @@
     - [10.1.5. target](#1015-target)
     - [10.1.6. name](#1016-name)
     - [10.1.7. form 属性](#1017-form-属性)
-  - [10.6. label](#106-label)
-  - [10.2. input](#102-input)
-    - [10.2.1. 公共属性](#1021-公共属性)
-    - [10.2.2. 输入文本](#1022-输入文本)
-    - [10.2.3. 输入密码](#1023-输入密码)
-    - [10.2.4. 作为按钮](#1024-作为按钮)
-    - [10.2.5. 输入数据](#1025-输入数据)
-    - [10.2.6. 固定选项](#1026-固定选项)
-    - [10.2.7. 输入 email 和 url 等](#1027-输入-email-和-url-等)
-    - [10.2.8. 输入时间和日期](#1028-输入时间和日期)
-    - [10.2.9. 输入颜色](#1029-输入颜色)
-    - [10.2.10. 用于搜索](#10210-用于搜索)
-    - [10.2.11. 隐藏输入控件](#10211-隐藏输入控件)
-    - [10.2.12. 上传文件](#10212-上传文件)
-    - [10.2.13. 图片按钮](#10213-图片按钮)
-  - [10.3. button](#103-button)
-    - [10.3.1. submit](#1031-submit)
-    - [10.3.2. reset](#1032-reset)
-    - [10.3.3. 一般用法](#1033-一般用法)
-  - [10.4. select](#104-select)
-  - [10.5. textarea](#105-textarea)
+  - [10.2. label](#102-label)
+  - [10.3. input](#103-input)
+    - [10.3.1. 公共属性](#1031-公共属性)
+    - [10.3.2. 输入文本](#1032-输入文本)
+    - [10.3.3. 输入密码](#1033-输入密码)
+    - [10.3.4. 作为按钮](#1034-作为按钮)
+    - [10.3.5. 输入数据](#1035-输入数据)
+    - [10.3.6. 固定选项](#1036-固定选项)
+    - [10.3.7. 输入 email 和 url 等](#1037-输入-email-和-url-等)
+    - [10.3.8. 输入时间和日期](#1038-输入时间和日期)
+    - [10.3.9. 输入颜色](#1039-输入颜色)
+    - [10.3.10. 用于搜索](#10310-用于搜索)
+    - [10.3.11. 隐藏输入控件](#10311-隐藏输入控件)
+    - [10.3.12. 上传文件](#10312-上传文件)
+    - [10.3.13. 图片按钮](#10313-图片按钮)
+  - [10.4. button](#104-button)
+    - [10.4.1. submit](#1041-submit)
+    - [10.4.2. reset](#1042-reset)
+    - [10.4.3. 一般用法](#1043-一般用法)
+  - [10.5. select](#105-select)
+  - [10.6. textarea](#106-textarea)
   - [10.7. fieldset](#107-fieldset)
 - [11. 嵌入元素](#11-嵌入元素)
   - [11.1. img](#111-img)
-  - [11.2. embed](#112-embed)
-  - [11.3. progress](#113-progress)
-  - [11.4. meter](#114-meter)
-  - [11.5. audio](#115-audio)
-  - [11.6. video](#116-video)
-  - [11.7. canvas](#117-canvas)
+  - [11.2. map 和 area](#112-map-和-area)
+  - [11.3. iframe](#113-iframe)
+  - [11.4. 插件](#114-插件)
+    - [11.4.1. embed](#1141-embed)
+    - [11.4.2. object](#1142-object)
+  - [11.5. 指示条](#115-指示条)
+    - [11.5.1. progress](#1151-progress)
+    - [11.5.2. meter](#1152-meter)
+  - [11.6. 音视频](#116-音视频)
+    - [11.6.1. video](#1161-video)
+  - [11.7. audio](#117-audio)
+  - [11.8. track](#118-track)
+  - [11.9. canvas](#119-canvas)
+- [12. 理解 CSS](#12-理解-css)
 
 # 1. HTML5 背景
 
@@ -1373,7 +1381,7 @@ b 元素表示一段文字（将这段文宇从周围文字中凸现出未并不
 | 内容              | 0、或多个 li 元素                                                                                                                                                  |
 | 标签用法          | 开始和结束标签                                                                                                                                                     |
 | 是否为 HTML5 新增 | 否                                                                                                                                                                 |
-| 在 HTML5 中的变化 | reversed 屈性是 HTML5 中新增的。在 HTM 区中已不赞成使用的 start 和 type 屈性在 HTML5 中又得以恢复， 不过其含义变成了语义（而不是呈现）方面的。compact 属性不再使用 |
+| 在 HTML5 中的变化 | reversed 属性是 HTML5 中新增的。在 HTM 区中已不赞成使用的 start 和 type 属性在 HTML5 中又得以恢复， 不过其含义变成了语义（而不是呈现）方面的。compact 属性不再使用 |
 | 习惯样式          | ol { display: block; list-style-type: decimal;margin-before: 1em; margin-after: 1em; margin-start: 0; margin-end: 0;padding-start: 40px; }                         |
 
 摘要表中的信息包括：哪些元素可成为该元素的父元素，该元素可以包含什么类型的内容，标签应该怎样使用，默认呈现样式，该元素是否为 HTML5 新增或在 HTML5 中发生了什么变化。关于允许具有什么父元素和内容的信息，其依据是介绍过的元素类型（主要是流元素和短语元素）。
@@ -1647,7 +1655,7 @@ base 元素指定用于一个文档中包含的所有相对 URL 的根 URL。hea
 | 父元素       | head           |
 | 局部属性     | href, target   |
 | 内容         | 无             |
-| 标签         | 开始标签       |
+| 标签         | 虚元素形式     |
 | 关于 html5   | html5 以前就有 |
 | 用户代理样式 | display: none; |
 
@@ -1682,7 +1690,7 @@ meta 元素可以用来定义文档的各种元数据。它有多种不同用法
 | 父元素       | head                               |
 | 局部属性     | name, content, charset, http-equiv |
 | 内容         | 无                                 |
-| 标签         | 开始标签                           |
+| 标签         | 虚元素形式                         |
 | 关于 html5   | html5 以前就有, charset 为新增     |
 | 用户代理样式 | display: none;                     |
 
@@ -1823,7 +1831,7 @@ link 元素可用来在 HTML 文档和外部资源(css 样式表是最典型的�
 | 父元素       | head, noscript            |
 | 局部属性     | rel, href, type, media 等 |
 | 内容         | 无                        |
-| 标签         | 开始标签                  |
+| 标签         | 虚元素形式                |
 | 关于 html5   | html5 以前就有            |
 | 用户代理样式 | display: none;            |
 
@@ -2763,7 +2771,7 @@ HTML `<hr>` 元素表示段落级元素之间的主题转换（例如，一个�
 | 父元素       | 任何可以包含流元素的元素 |
 | 局部属性     | 无                       |
 | 内容         | 无                       |
-| 标签         | 开始标签                 |
+| 标签         | 虚元素形式               |
 | 关于 html5   | hr 的局部属性被废弃      |
 | 用户代理样式 | 见下                     |
 
@@ -3201,7 +3209,7 @@ br 元素会引起一次换行。其习惯样式是将后续内容转移到新�
 | 父元素       | 可以包含短语元素的任何元素 |
 | 局部属性     | 无                         |
 | 内容         | 无                         |
-| 标签         | 开始标签                   |
+| 标签         | 虚元素形式                 |
 | 关于 html5   | 无                         |
 | 用户代理样式 | 无                         |
 
@@ -3239,7 +3247,7 @@ wbr 元素是 HTML5 中新增的，用来表示长度超过当前浏览器窗口
 | 父元素       | 可以包含短语元素的任何元素 |
 | 局部属性     | 无                         |
 | 内容         | 无                         |
-| 标签         | 开始标签                   |
+| 标签         | 虚元素形式                 |
 | 关于 html5   | 无                         |
 | 用户代理样式 | 无                         |
 
@@ -4149,7 +4157,7 @@ name 属性可以用来为表单设置一个独一无二的标识符，以便使
 
 在 HTML4 中，input 、button 和其他与表单相关的元素必须放在 form 元素中。本章前面所有例子都是这样做的。在 HTML5 中，这条限制不复存在。现在可以将这类元素与文档中任何地方的表单挂钩。input 、button 元素以及其他与表单相关的元素都定义了一个 form 属性，该属性正是用于这个目的。要将某个这类元素与并非其祖先元素的 form 元素挂钩，只需要将其 form 属性设置为相关 form 元素的 id 属性值即可。
 
-## 10.6. label
+## 10.2. label
 
 label 元素用于表示用户界面中某个元素的说明。
 
@@ -4182,7 +4190,7 @@ label 元素用于表示用户界面中某个元素的说明。
 
 表示与 label 元素关联的 `<form>` 元素（即它的表单拥有者）。如果声明了该属性，其值应是同一文档中 `<form>` 元素的 id。因此你可以将 label 元素放在文档的任何位置，而不仅作为 `<form>` 元素的后代。
 
-## 10.2. input
+## 10.3. input
 
 第二种关键元素是 input, 其用途是收集用户输入数据。input 元素在浏览器中显示为一个简单的文本框。用户就在这个文本框中输入内容。这是最基本的一种 input 元素。后面会介绍收集用户输入数据的多种选择，包括 HTML5 中新增的一些很棒的特性。
 
@@ -4194,7 +4202,7 @@ label 元素用于表示用户界面中某个元素的说明。
 | 父元素       | 可以包含短语元素的元素                   |
 | 局部属性     | autofocus, name, disabled, form, type 等 |
 | 内容         | 无                                       |
-| 标签         | 开始标签                                 |
+| 标签         | 虚元素形式                               |
 | 关于 html5   | 新增了各种 type 的 input 元素            |
 | 用户代理样式 | 见下                                     |
 
@@ -4235,7 +4243,7 @@ input {
 }
 ```
 
-### 10.2.1. 公共属性
+### 10.3.1. 公共属性
 
 以下属性为所有类型的 input 输入控件所共有。
 
@@ -4271,7 +4279,7 @@ input 表单控件的类型
 
 用于表单的自动填充功能
 
-### 10.2.2. 输入文本
+### 10.3.2. 输入文本
 
 type 属性设置为 text 的 input 元素在浏览器中显示为一个单行文本框。上一章用到的 input 元素就是这个样子，这是未设置 type 属性情况下的默认形式。
 
@@ -4398,7 +4406,7 @@ HTML5 引入了对输入验证(input validation) 的支持。设计者可以告�
 />
 ```
 
-### 10.2.3. 输入密码
+### 10.3.3. 输入密码
 
 type 属性值设置为 password 的 input 元素用于输入密码。用户输入的字符在这种文本框中显示为星号（\*）之类的掩饰字符。
 
@@ -4420,13 +4428,13 @@ input 元素在 type 属性被设置为 password 时可以使用一些额外属�
 />
 ```
 
-### 10.2.4. 作为按钮
+### 10.3.4. 作为按钮
 
 将 input 元素的 type 属性设置为 submit 、reset 和 button 会生成类似 button 元素那样的按钮。
 
 submit 型 input 元素可用的额外属性与 button 元素的同名属性用法相同。reset 和 button 型 input 元素没有定义任何额外的属性。
 
-### 10.2.5. 输入数据
+### 10.3.5. 输入数据
 
 1. **number**
 
@@ -4469,7 +4477,7 @@ checkbox 型 input 元素会生成供用户选择是或否的复选框。
 <input type="checkbox" name="havejob" checked />
 ```
 
-### 10.2.6. 固定选项
+### 10.3.6. 固定选项
 
 radio 型 input 元素可以用来生成一组单选按钮， 供用户从一批固定的选项中作出选择。它适合于可用有效数据不多的情况。这种 input 元素的额外属性 checked 指定了 input 元素的选中状态。
 
@@ -4493,7 +4501,7 @@ radio 型 input 元素可以用来生成一组单选按钮， 供用户从一批
 </fieldset>
 ```
 
-### 10.2.7. 输入 email 和 url 等
+### 10.3.7. 输入 email 和 url 等
 
 type 属性设置为 email 、tel 和 url 的 input 元素能接受的输入数据分别为有效的电子邮箱地址、电话号码和 URL。
 
@@ -4530,7 +4538,7 @@ type 属性设置为 email 、tel 和 url 的 input 元素能接受的输入数�
 />
 ```
 
-### 10.2.8. 输入时间和日期
+### 10.3.8. 输入时间和日期
 
 HTML5 中增加了一些 input 元素的新类型，供用户输入日期和时间。下表介绍了这些类型的 input 元素。
 
@@ -4580,7 +4588,7 @@ datetime 类型已经被废弃。
 <small>Office hours are 9am to 6pm</small>
 ```
 
-### 10.2.9. 输入颜色
+### 10.3.9. 输入颜色
 
 color 型 input 元素只能用来选择颜色。这种类型的 input 元素还支持讲过的 list 属性。
 
@@ -4594,7 +4602,7 @@ color 型 input 元素只能用来选择颜色。这种类型的 input 元素还
 <input type="color" value="#ff0000" />
 ```
 
-### 10.2.10. 用于搜索
+### 10.3.10. 用于搜索
 
 search 型 input 元素会生成一个单行文本框， 供用户输入搜索用词。这种 input 元素有点与众不同，它实际上什么事都不做。它既不会对用户输入的数据作出限制，也没有诸如搜索本页或借助用户的默认搜索引擎进行搜索这样的功能。这类 input 元素支持的额外属性与 text 型 input 元素相同。
 
@@ -4606,7 +4614,7 @@ search 型 input 元素会生成一个单行文本框， 供用户输入搜索�
 <button>Search</button>
 ```
 
-### 10.2.11. 隐藏输入控件
+### 10.3.11. 隐藏输入控件
 
 "hidden" 类型的 `<input>` 元素允许 Web 开发者存放一些用户不可见、不可改的数据，在用户提交表单时，这些数据会一并发送出。比如，正被请求或编辑的内容的 ID，或是一个唯一的安全令牌。这些隐藏的 `<input>` 元素在渲染完成的页面中完全不可见，而且没有方法可以使它重新变为可见。
 
@@ -4616,7 +4624,7 @@ search 型 input 元素会生成一个单行文本框， 供用户输入搜索�
 <input id="prodId" name="prodId" type="hidden" value="xm234jq" />
 ```
 
-### 10.2.12. 上传文件
+### 10.3.12. 上传文件
 
 使用 type="file" 的 `<input>` 元素使得用户可以选择一个或多个元素以提交表单的方式上传到服务器上，或者通过 Javascript 的 File API 对文件进行操作。
 
@@ -4672,7 +4680,7 @@ ultiple 属性指定可以一次选择多个文件。 用户可以用他们选�
 - type
   文件的 MIME 类型。
 
-### 10.2.13. 图片按钮
+### 10.3.13. 图片按钮
 
 `<input type="image">` 标签是一个图片提交按钮。你必须使用 src 属性来定义图片的源，并且使用 alt 来定义当图片无法显示的时候的替代文字。 height 和 width 属性是用来定义图片的高和宽的。
 
@@ -4682,7 +4690,7 @@ ultiple 属性指定可以一次选择多个文件。 用户可以用他们选�
 <input type="image" name="image" src="/files/2917/fxlogo.png" width="50" />
 ```
 
-## 10.3. button
+## 10.4. button
 
 最后一个关键元素是 button。用户需要有一种方法告诉浏览器：所有数据已经输入完毕，该把它们发给服务器了。这个事情多半是用 button 元素来做。
 
@@ -4736,7 +4744,7 @@ button {
 }
 ```
 
-### 10.3.1. submit
+### 10.4.1. submit
 
 如果将 button 元素的 type 属性设置为 submit, 那么按下该按钮会提交包含它的表单。这是未设置 type 属性的 button 元素的默认行为。采用这种方法使用该元素时，它还有额外的一些属性可用，如下表所述。
 
@@ -4757,7 +4765,7 @@ button {
 </button>
 ```
 
-### 10.3.2. reset
+### 10.4.2. reset
 
 如果将 button 元素的 type 属性设置为 reset, 那么按下按钮会将表单中所有 input 元素重置为初始状态。这样使用该元素时，没有额外的属性可用。
 
@@ -4765,11 +4773,11 @@ button {
 <button type="reset">Reset</button>
 ```
 
-### 10.3.3. 一般用法
+### 10.4.3. 一般用法
 
 如果将 button 元素的 type 属性设置为 button, 那么该 button 元素就仅仅是一个按钮。它没有特别的含义，在按下时也不会做任何事情。这样的按钮一般使用事件监听器，绑定一个事件处理器。
 
-## 10.4. select
+## 10.5. select
 
 select 元素可以用来生成一个选项列表供用户选择。它比介绍过的 radiobutton 型 input 元素更紧凑，更适合于选项较多的情形。
 
@@ -4840,7 +4848,7 @@ select {
 </select>
 ```
 
-## 10.5. textarea
+## 10.6. textarea
 
 textarea 元素生成的是多行文本框，用户可以在里面输入多行文字。下表概括了 textarea 元素。
 
@@ -4915,7 +4923,9 @@ cols 表示文本域的可见宽度，单位为字符的平均宽度。默认为
 下面的示例展示了 textarea 的用法。
 
 ```html
-<textarea name="textarea" rows="5" cols="30" minlength="10" maxlength="20">Write something here</textarea>
+<textarea name="textarea" rows="5" cols="30" minlength="10" maxlength="20">
+Write something here</textarea
+>
 ```
 
 ## 10.7. fieldset
@@ -5027,16 +5037,571 @@ legend {
 
 # 11. 嵌入元素
 
+在这一章里，我会介绍一些元素，你可以用它们来给 HTML 文档嵌入内容。到目前为止，我的重点主要是放在用 HTML 元素给文档创建结构和意义上。这一章里的元素让你可以丰富这些文档。
+
 ## 11.1. img
 
-## 11.2. embed
+img 元素允许我们在 HTML 文档里嵌入图像。下表概述了这个元素，它是使用最为广泛的 HTML 元素之一。
 
-## 11.3. progress
+| 元素         | img                                                |
+| ------------ | -------------------------------------------------- |
+| 元素类型     | 短语元素                                           |
+| 父元素       | 任何可以包含短语元素的元素                         |
+| 局部属性     | src、alt、height 、width、crossorigin, decoding 等 |
+| 内容         | 无                                                 |
+| 标签         | 虚元素形式                                         |
+| 关于 html5   | 废弃了一些属性                                     |
+| 用户代理样式 | 见下                                               |
 
-## 11.4. meter
+1. **src**
 
-## 11.5. audio
+src 属性是必须的，它包含了你想嵌入的图片的文件路径。
 
-## 11.6. video
+下面的例子指定了一个路径。
 
-## 11.7. canvas
+```html
+<img src="/favicon.icon"></img>
+```
+
+2. **alt**
+
+alt 属性包含一条对图像的文本描述，这不是强制性的，但对可访问性而言，它难以置信地有用——屏幕阅读器会将这些描述读给需要使用阅读器的使用者听，让他们知道图像的含义。如果由于某种原因无法加载图像，普通浏览器也会在页面上显示 alt 属性中的备用文本：例如，网络错误、内容被屏蔽或链接过期时。
+
+下面的例子指定了一个 alt 属性。
+
+```html
+<img src="/favicon.icon" alt="logo" />
+```
+
+3. **height 和 width**
+
+图像的高度，在 HTML5 中的单位是 CSS 像素，在 HTML 4 中既可以是像素，也可以是百分比。可以只指定 width 和 height 中的一个值，浏览器会根据原始图像进行缩放。
+
+```html
+<img src="/favicon.icon" alt="logo" width="200" />
+```
+
+4. **crossorigin**
+
+这个枚举属性表明是否必须使用 CORS 完成相关图像的抓取。启用 CORS 的图像 可以在 `<canvas>` 元素中重复使用，而不会被污染（tainted）。允许的值有：
+
+- anonymous
+  执行一个跨域请求（比如，有 Origin HTTP header）。但是没有发送证书（比如，没有 cookie，没有 X.509 证书，没有 HTTP 基本授权认证）。如果服务器没有把证书给到源站（没有设置 Access-Control-Allow-Origin HTTP 头），图像会被污染，而且它的使用会被限制。
+
+- use-credentials
+  一个有证书的跨域请求（比如，有 Origin HTTP header）被发送 （比如，cookie, 一份证书，或者 HTTP 基本验证信息）。如果服务器没有给源站发送证书（通过 Access-Control-Allow-Credentials HTTP header），图像将会被污染，且它的使用会受限制。
+
+当用户并未显式使用本属性时，默认不使用 CORS 发起请求（例如，不会向服务器发送原有的 HTTP 头部信息），可防止其在 `<canvas>` 中的使用。如果无效，默认当做 anonymous 关键字生效。
+
+5. **decoding**
+
+- sync
+  同步解码图像，实现与其他内容的显示相互斥的原子显示。此图像的解码将是一个原子操作，在完成解码显示之前，不被其他内容的显示而打断，因此其他内容的显示会被延迟。
+
+- async
+  异步解码图像，以减少其他内容的显示延迟。
+
+- auto
+  默认值：不指定解码方式，由浏览器决定哪一种对用户来说是最合适的。
+
+6. **loading**
+
+指示浏览器应当如何加载该图像。允许的值：
+
+- eager
+  立即加载图像，不管它是否在可视视口（visible viewport）之外（默认值）。
+- lazy
+  延迟加载图像，直到它和视口接近到一个计算得到的距离，由浏览器定义。
+
+这是一个很新的属性，chrome 77 以上才支持。
+
+7. **ismap**
+
+这个布尔属性表示图像是否是服务器端 map 的一部分。如果是，那么点击图片的精准坐标将会被发送到服务器。
+
+8. **usermap**
+
+与元素相关联的 image map (en-US) 的部分 URL（以 '#' 开始的部分）。
+
+## 11.2. map 和 area
+
+我们可以创建一个客户端分区响应图，通过点击某张图像上的不同区域让浏览器导航到不同的 URL 上。这一过程不需要通过服务器引导，因此需要使用元素来定义图像上的各个区域以及它们所代表的行为。客户端分区响应图的关键元素是 map，下表概括了这个元素。
+
+| 元素         | map                                                                 |
+| ------------ | ------------------------------------------------------------------- |
+| 元素类型     | map 元素在包含短语内容时被视为短语元素， 包含流内容时则被视为流元素 |
+| 父元素       | 短语或流                                                            |
+| 局部属性     | name                                                                |
+| 内容         | 1 个至多个 area                                                     |
+| 标签         | 开始标签+内容+结束标签                                              |
+| 关于 html5   | 废弃了一些属性                                                      |
+| 用户代理样式 | 如果使用了 id 属性， 它的值必须和 name 属性相同                     |
+
+map 元素包含一个或多个 area 元素，它们各自代表了图像上可被点击的一块区域。下表概述了 area 元素。
+
+| 元素         | area                                                                |
+| ------------ | ------------------------------------------------------------------- |
+| 元素类型     | 短语                                                                |
+| 父元素       | map                                                                 |
+| 局部属性     | alt 、href 、target 、rel 、media、hreflang 、type、shape 、coords  |
+| 内容         | 无                                                                  |
+| 标签         | 虚元素形式                                                          |
+| 关于 html5   | 废弃了一些属性                                                      |
+| 用户代理样式 | rel、media 和 hreflang 属性是 HTML5 中新增的。nohref 属性现已被废弃 |
+
+area 元素的属性可以被分为两类，第一类处理的是 area 所代表的图像区域被用户点击后浏览器会导航到的 URL。下表介绍了这一类属性，它们类似于你在其他元素上见到过的对应属性。
+
+| 属性     | 说明                     |
+| -------- | ------------------------ |
+| href     | 链接 URL                 |
+| alt      | 替代内容                 |
+| target   | 打开新窗口的方式         |
+| rel      | 当前文档和目标资源的关系 |
+| media    | 适用媒体                 |
+| hreflang | 目标资源的语言           |
+| type     | 目标资源的 MIME 类型     |
+
+第二类则包含了更有意思的属性：shape 和 coords 属性。可以用这些属性来标明用户可以点击的各个图像区域。shape 和 coords 属性是共同起作用的。coords 属性的意思根据 shape 属性的值而定。
+
+- shape: rect
+
+这个值代表了一个矩形区域。coords 属性必须由四个用逗号分隔的整数组成，它们代表了下列位置之间的距离：
+
+1. 图像的左边缘与矩形的左侧
+2. 图像的上边缘与矩形的上侧
+3. 图像的右边缘与矩形的右侧
+4. 图像的下边缘与矩形的下侧
+
+circle 这个值代表了一个圆形区域。coords 属性必须由三个用逗号分隔的整数组成，它们代表了下列参数：
+
+1. 从图像左边缘到圆心的距离
+2. 从图像上边缘到圆心的距离
+3. 圆的半径
+
+- poly
+
+这个值代表了一个多边形。coords 属性必须至少包含六个用逗号分隔的整数，每一对数字各代表多边形的一个顶点
+
+- default
+
+这个值的意思是默认区域， 即覆盖整张图片。shape 属性使用这个值时不需要提供 coords 值
+
+## 11.3. iframe
+
+iframe 元素允许我们在现有的 HTML 文档中嵌入另一张文档。下表概括了这个元素。
+
+| 元素         | iframe                                               |
+| ------------ | ---------------------------------------------------- |
+| 元素类型     | 短语                                                 |
+| 父元素       | 可以包含短语元素的元素                               |
+| 局部属性     | src、srcdoc、name 、width、height、sandbox、seamless |
+| 内容         | 文本                                                 |
+| 标签         | 开始标签+内容+结束标签                               |
+| 关于 html5   | 调整了一些属性                                       |
+| 用户代理样式 | border: 2px, inset;                                  |
+
+下面的例子展示了用法。
+
+```html
+<iframe
+  id="inlineFrameExample"
+  title="Inline Frame Example"
+  width="300"
+  height="200"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik"
+></iframe>
+```
+
+## 11.4. 插件
+
+object 和 embed 元素最初都是作为扩展浏览器能力的一种方式，用于添加插件支持，而插件能够处理浏览器不直接支持的内容。这些元素是在第 1 章里提到的浏览器战争时期被引入的，分别来自于不同的阵营。
+
+之后，object 元素成了 HTM 区规范的一部分，而 embed 元素却没有（尽管 embed 元素已经被广泛使用）。为了公平对待这两种元素，HTML5 添加了对 embed 元素的支持。这样，出于兼容性的缘故，你就有了两个非常相似的元素。
+
+### 11.4.1. embed
+
+下表概括了 embed 元素。
+
+| 元素         | embed                    |
+| ------------ | ------------------------ |
+| 元素类型     | 短语                     |
+| 父元素       | 可以包含短语元素的元素   |
+| 局部属性     | src, type, height, width |
+| 内容         | 无                       |
+| 标签         | 虚元素形式               |
+| 关于 html5   | 新增                     |
+| 用户代理样式 | 无                       |
+
+下面展示了 embed 元素的用法。
+
+```html
+<embed type="video/quicktime" src="movie.mov" width="640" height="480" />
+```
+
+### 11.4.2. object
+
+object 元素实现的效果和 embed 元素一样，但它的工作方式稍有不同，并带有一些额外的功能。
+
+下表概括了 object 元素。
+
+| 元素         | object                   |
+| ------------ | ------------------------ |
+| 元素类型     | 流或短语                 |
+| 父元素       | 流或短语                 |
+| 局部属性     | src, type, height, width |
+| 内容         | 无                       |
+| 标签         | 开始标签+内容+结束标签   |
+| 关于 html5   | 调整了很多属性           |
+| 用户代理样式 | 无                       |
+
+data 属性提供了资源的地址，type 、width 和 height 属性和在 embed 元素里的意思一致。使用 param 元素来定义将要传递给插件的参数，每个需要定义的参数都各自使用一个 param 元素。
+
+下表总结了 param 元素。
+
+| 元素         | param          |
+| ------------ | -------------- |
+| 元素类型     | 无             |
+| 父元素       | object         |
+| 局部属性     | name, value    |
+| 内容         | 无             |
+| 标签         | 虚元素形式     |
+| 关于 html5   | 无             |
+| 用户代理样式 | display: none; |
+
+下面的例子展示了 object 的用法。
+
+```html
+<object
+  type="application/pdf"
+  data="/media/examples/In-CC0.pdf"
+  width="250"
+  height="200"
+></object>
+```
+
+## 11.5. 指示条
+
+HTML5 有两个新元素允许我们显示指示条。
+
+### 11.5.1. progress
+
+progress 元素可以用来表现某项任务逐渐完成的过程。下表概述了 progress 元素。
+
+| 元素         | progress               |
+| ------------ | ---------------------- |
+| 元素类型     | 短语                   |
+| 父元素       | 任何包含短语的元素     |
+| 局部属性     | value, max, form       |
+| 内容         | 短语内容               |
+| 标签         | 开始标签+内容+结束标签 |
+| 关于 html5   | html5 新增             |
+| 用户代理样式 | 见下                   |
+
+progress 的用户代理样式见下：
+
+```css
+progress {
+  -webkit-writing-mode: horizontal-tb !important;
+  appearance: auto;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 1em;
+  width: 10em;
+  vertical-align: -0.2em;
+}
+```
+
+value 属性定义了当前的进度， 它位于 0 和 max 属性的值所构成的范围之间。当 max 属性被省略时，范围是 0 至 1。用浮点数来表示进度，比如 0.3 代表 30%。
+
+下面的例子展示了 progress 的用法。
+
+```html
+<label>上传进度：</label>
+<progress max="100" value="61.8"></progress>
+```
+
+### 11.5.2. meter
+
+meter 元素显示了某个范围内所有可能值中的一个。下表概述了这个元素。
+
+| 元素         | meter                              |
+| ------------ | ---------------------------------- |
+| 元素类型     | 短语                               |
+| 父元素       | 任何包含短语的元素                 |
+| 局部属性     | value, max, min, low, high, optium |
+| 内容         | 短语内容                           |
+| 标签         | 开始标签+内容+结束标签             |
+| 关于 html5   | html5 新增                         |
+| 用户代理样式 | 无                                 |
+
+min 和 max 属性设定了可能值所处范围的边界，它们可以用浮点数来表示。meter 元素的显示可以分为三个部分：过低、过高和最佳。low 属性设置了一个值，在它之下的所有值都被认为是过低；high 属性设置了一个值，在它之上的所有值都被认为是过高；optimum 属性则指定了“最佳＇的值。
+
+下面的代码展示了将这些属性应用到 meter 元素。
+
+```html
+<p>
+  Heat the oven to
+  <meter min="200" max="500" value="350">350 degrees</meter>
+  .
+</p>
+```
+
+## 11.6. 音视频
+
+HTML5 支持直接在浏览器中播放音频和视频文件，不需要使用 Adobe Flash 这样的插件。插件是令浏览器崩溃的主要原因之一，特别是 Flash，这个插件导致的诸多问题已经让它声名狼藉。抛开名声不提，我也已经因为媒体播放的原因开始讨厌 Flash 了。我喜欢在写作的时候听播客(podcast)， 而 Chrome 浏览器默认使用 Flash 播放它们。我喜欢集成带来的方便气但是它时不时会因为某些问题导致机器锁死。这都快让我发疯了，每一次我都会咒骂 Adobe 公司。Flash 的普遍性是很有用的，但软件的质量还有很多不尽如人意的地方。
+
+正如你将在这一节里看到的，HTML 对原生音频和视频的支持潜力巨大，但还有一些问题亟待解决。这些问题主要是关于每种浏览器支持的媒体格式，以及浏览器对它们播放文件格式能力所做的不同解释。
+
+### 11.6.1. video
+
+可以用 video 元素在网页里嵌入视频内容。下表介绍了 video 元素。
+
+| 元素         | video                                                                     |
+| ------------ | ------------------------------------------------------------------------- |
+| 元素类型     | 流/短语                                                                   |
+| 父元素       | 任何包含流/短语的元素                                                     |
+| 局部属性     | autoplay 、preload、controls 、loop、poster 、height 、width、muted 、src |
+| 内容         | source 和 track 元素，以及短语和流内容                                    |
+| 标签         | 开始标签+内容+结束标签                                                    |
+| 关于 html5   | html5 新增                                                                |
+| 用户代理样式 | 无                                                                        |
+
+下面的例子展示了 video 元素的用法。
+
+```html
+<video
+  width="360"
+  height="240"
+  src="./coast_sea_ocean_nature_water_beach_867.mp4"
+  autoplay
+  controls
+  preload="none"
+  muted
+>
+  Video cannot be displayed
+</video>
+```
+
+如果浏览器不支持 video 元素或者无法播放视频， 那么备用内容（开始和结束标签之间的内容）就会代替它显示。在这个例子里中，我显示了一段简单的文本消息，但常用的技巧是提供使用非 HTML5 技术（例如 Flash)的视频播放，以支待旧版的浏览器。
+
+video 元素有许多属性，下表列出了它们。
+
+| 属性     | 说明                                         |
+| -------- | -------------------------------------------- |
+| src      | 指定要视频地址                               |
+| height   | 指定视频的高度                               |
+| width    | 指定视频的宽度                               |
+| controls | 除非此屈性存在， 否则浏览器不会显示播放控件  |
+| autoplay | 此属性会使浏览器一开始就自动播放视频         |
+| preload  | 告诉浏览器是否要预先载入视频                 |
+| loop     | 如果存在， 此屈性会让浏览器反复播放视频      |
+| poster   | 指定在视频数据载入时显示的图片               |
+| muted    | 如果此屈性存在，视频从一开始就会处千静音状态 |
+
+1. **src**
+
+指定视频最简单的方式是使用 src 属性，并提供所需视频文件的 URL。这就是我在之前例子里所用的方法。
+
+一个不幸的事实是，没有哪一种格式能够用于所有的主流浏览器。你必须以多种格式编码视频，直到出现统一的格式为止。
+
+可以使用 source 元素来指定多个格式。下表介绍了这个元素。
+
+| 元素         | source           |
+| ------------ | ---------------- |
+| 元素类型     | 无               |
+| 父元素       | video, audio     |
+| 局部属性     | src, type, media |
+| 内容         | 无               |
+| 标签         | 虚元素形式       |
+| 关于 html5   | html5 新增       |
+| 用户代理样式 | 无               |
+
+下面的代码展示了上述用法。
+
+```html
+<video controls>
+  <source src="myVideo.mp4" type="video/mp4" />
+  <source src="myVideo.webm" type="video/webm" />
+  <p>
+    Your browser doesn't support HTML5 video. Here is a
+    <a href="myVideo.mp4">link to the video</a>
+    instead.
+  </p>
+</video>
+```
+
+浏览器会沿着列表顺序寻找它能够播放的视频文件。这可能会引发多个服务器请求以获得每个文件的额外信息。浏览器判断它是否能播放某个视频的依据之一是服务器返回的 MIME 类型。
+
+2. **width 和 height**
+
+如果省略 width 和 height 属性，浏览器就会显示一个很小的占位元素，并在元数据可用时（也就是当用户开始播放，或者 preload 属性被设为 metadata 时）把它调整到视频原始尺寸的大小。这可能会产生颤动感，因为页面布局需要调整以容纳视频。
+
+如果指定 width 和 height 属性， 浏览器会保持视频的长宽比（不必担心视频会向任一方向拉伸）。
+
+下面的代码展示了 width 和 height 属性的用法。
+
+```html
+<video
+  src="./coast_sea_ocean_nature_water_beach_867.mp4"
+  controls
+  preload="auto"
+  width="600"
+  height="240"
+>
+  Video cannot be displayed
+</video>
+```
+
+3. **preload**
+
+preload 属性告诉浏览器：当它加载完包含 vide6 元素的网页后，是否应该积极地去下载视频。预先加载视频减少了用户播放时的初始延迟， 但如果用户不观看视频则会造成网络带宽的浪费。
+
+下面介绍了这个属性允许设置的值。
+
+- none: 提示作者认为用户不需要查看该视频，服务器也想要最小化访问流量；换句话说就是提示浏览器该视频不需要缓存。
+- metadata: 提示尽管作者认为用户不需要查看该视频，不过抓取元数据（比如：长度）还是很合理的。
+- auto: 用户需要这个视频优先加载；换句话说就是提示：如果需要的话，可以下载整个视频，即使用户并不一定会用它。
+  空字符串：也就代指 auto 值。
+
+假如不设置，默认值就是浏览器定义的了 （即，不同浏览器会选择自己的默认值），即使规范建议设置为 metadata。
+
+4. **poster**
+
+可以用 poster 属性向用户呈现一张占位图像。这张图像会显示在视频的位置，直至用户开始播放。
+
+下面代码展示了如何使用 poster 属性。
+
+```html
+<video
+  width="360"
+  height="240"
+  src="./coast_sea_ocean_nature_water_beach_867.mp4"
+  controls
+  preload="none"
+  poster="poster.png"
+>
+  Video cannot be displayed
+</video>
+```
+
+## 11.7. audio
+
+audio 元素允许你在 HTML 文档里嵌入音频内容。
+
+下表介绍了这个元素。
+
+| 元素         | audio                                              |
+| ------------ | -------------------------------------------------- |
+| 元素类型     | 流/短语                                            |
+| 父元素       | 任何能包含流或短语元素的元素                       |
+| 局部属性     | autoplay 、preload 、controls 、loop 、muted 、src |
+| 内容         | source 和 track 元素，以及短语和流内容             |
+| 标签         | 开始标签+内容+结束标签                             |
+| 关于 html5   | html5 新增                                         |
+| 用户代理样式 | 无                                                 |
+
+可以看到，audio 元素和 video 元素有许多共同点。
+
+下面的代码展示了 audio 元素的用法。
+
+```html
+<audio controls src="/media/cc0-audio/t-rex-roar.mp3">
+  Your browser does not support the
+  <code>audio</code>
+  element.
+</audio>
+```
+
+## 11.8. track
+
+HTML `<track>` 元素 被当作媒体元素—`<audio>` 和 `<video>`的子元素来使用。它允许指定时序文本字幕（或者基于时间的数据），例如自动处理字幕。字幕格式有 WebVTT 格式（.vtt 格式文件）— Web 视频文本字幕格式，以及指时序文本标记语言（TTML）格式。
+
+track 给媒体元素添加的数据的类型在 kind 属性中设置，属性值可以是 subtitles, captions, descriptions, chapters 或 metadata。该元素指向当用户请求额外的数据时浏览器公开的包含定时文本的源文件。
+
+一个 media 元素的任意两个 track 子元素不能有相同的 kind, srclang, 和 label 属性。
+
+```html
+<video controls src="/media/cc0-videos/friday.mp4">
+  <track
+    default
+    kind="captions"
+    srclang="en"
+    src="/media/examples/friday.vtt"
+  />
+  Sorry, your browser doesn't support embedded videos.
+</video>
+```
+
+1. **kind**
+
+kind 定义了 text track 应该如何使用。如果省略了该属性，默认的 kind 值就是 subtitles。下面是允许的关键字：
+
+- subtitles
+
+字幕给观影者看不懂的内容提供了翻译。比如英文电影里非英文的对话框或者文字。字幕可能包含额外的内容，通常有附加的背景信息。比如在电影星球大战开头的文字，或者某个场景的日期，时间，还有地点。
+
+- captions
+  隐藏式字幕提供了音频的转录甚至是翻译。可能包含重要的非言语的信息，比如音乐提示或者音效。可以指定提示音的源文件 (e.g. music, text, character).适用于耳聋的用户或者当调成静音的时候。
+
+- descriptions
+  视频内容的文本描述。适用于失明用户或者当视频不可见的场景。
+
+- chapters
+  章节标题用于用户浏览媒体资源的时候。
+
+- metadata
+  脚本使用的 track。对用户不可见。
+
+2. **default**
+
+该属性定义了该 track 应该启用，除非用户首选项指定了更合适一个 track。每个媒体元素里面只有一个 track 元素可以有这个属性。
+
+3. **label**
+
+当列出可用的 text tracks 时，给浏览器使用的 text track 的标题，这种标题是用户可读的。
+
+4. **src**
+
+track 的地址。必须是合法的 URL。该属性必须定义。
+
+5. **srclang**
+
+track 文本数据的语言。它必须是合法的 BCP 47 语言标签。如果 kind 属性被设为 subtitles, 那么 srclang 必须定义。
+
+下面也是一个例子。
+
+```html
+<video controls poster="/images/sample.gif">
+  <source src="sample.mp4" type="video/mp4" />
+  <source src="sample.ogv" type="video/ogv" />
+  <track kind="captions" src="sampleCaptions.vtt" srclang="en" />
+  <track kind="descriptions" src="sampleDescriptions.vtt" srclang="en" />
+  <track kind="chapters" src="sampleChapters.vtt" srclang="en" />
+  <track kind="subtitles" src="sampleSubtitles_de.vtt" srclang="de" />
+  <track kind="subtitles" src="sampleSubtitles_en.vtt" srclang="en" />
+  <track kind="subtitles" src="sampleSubtitles_ja.vtt" srclang="ja" />
+  <track kind="subtitles" src="sampleSubtitles_oz.vtt" srclang="oz" />
+  <track kind="metadata" src="keyStage1.vtt" srclang="en" label="Key Stage 1" />
+  <track kind="metadata" src="keyStage2.vtt" srclang="en" label="Key Stage 2" />
+  <track kind="metadata" src="keyStage3.vtt" srclang="en" label="Key Stage 3" />
+  <!-- Fallback -->
+  ...
+</video>
+```
+
+## 11.9. canvas
+
+`<canvas>` 元素可被用来通过 JavaScript（Canvas API 或 WebGL API）绘制图形及图形动画。
+
+下面的例子展示了一个简单用法。
+
+```html
+<canvas id="canvas" width="300" height="300">
+  抱歉，您的浏览器不支持canvas元素 （这些内容将会在不支持
+  <canvas>元素的浏览器或是禁用了JavaScript的浏览器内渲染并展现）</canvas>
+</canvas>
+```
+
+详细的内容可参见[这里](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API)。
+
+# 12. 理解 CSS

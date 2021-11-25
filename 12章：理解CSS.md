@@ -344,3 +344,4 @@ CSS 中的一个基本概念是盒模型(box model)。可见元素会在页面�
 | list-style-image    | 指定列表项标记使用的图像             | 1        |
 | list-style-position | 指定列表项标记相对于列表项内容的位置 | 1        |
 | list-style-type     | 指定列表项标记的类型                 | 1        |
+
